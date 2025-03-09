@@ -1,0 +1,16 @@
+/.idea/*
+.mtj.tmp/
+/**/target/**
+*.class
+*.log
+*.xml
+!pom.xml
+*.ctxt
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.iml
