@@ -1,15 +1,12 @@
 package com.project.accounts.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.util.List;
 
-@Getter @Setter
+@Getter @Setter @ToString(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "CUSTOMER")
@@ -20,16 +17,16 @@ public class Customer extends BaseModel {
     @Column(name = "ID")
     private Long id;
     @NotNull
-    @Max(100)
+    @Size(max = 100)
     @Column(name = "NAME")
     private String name;
     @NotNull
-    @Max(255)
+    @Size(max = 255)
     @Email
     @Column(name = "EMAIL")
     private String email;
     @NotNull
-    @Min(11) @Max(11)
+    @Size(min = 11, max = 11)
     @Column(name = "MOBILE_NUMBER")
     private String mobileNumber;
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)

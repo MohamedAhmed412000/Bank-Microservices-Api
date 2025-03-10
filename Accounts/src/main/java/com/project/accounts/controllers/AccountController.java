@@ -21,7 +21,7 @@ public class AccountController {
 
     private final IAccountService iAccountService;
 
-    @PostMapping(value = "/create-account")
+    @PostMapping(value = "/create-account", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseDto> createAccount(
         @RequestBody CustomerDto customerDto
     ) {

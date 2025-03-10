@@ -10,9 +10,11 @@ import com.project.accounts.models.Customer;
 import com.project.accounts.repositories.AccountRepository;
 import com.project.accounts.repositories.CustomerRepository;
 import com.project.accounts.services.IAccountService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -23,6 +25,7 @@ public class AccountService implements IAccountService {
     private final AccountRepository accountRepository;
     private final CustomerRepository customerRepository;
     
+    @Transactional
     @Override
     public void createAccount(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
@@ -31,8 +34,10 @@ public class AccountService implements IAccountService {
         if (optionalCustomer.isPresent()) {
             throw new CustomerAlreadyExistsException("Customer with the given mobile number already exists.");
         }
-        Customer savedCustomer = customerRepository.save(customer);
-        accountRepository.save(createNewAccount(savedCustomer));
+        Account account = createNewAccount(customer);
+        customer.setAccounts(List.of(account));
+        customerRepository.save(customer);
+        accountRepository.save(account);
     }
 
     private Account createNewAccount(Customer customer) {
@@ -40,7 +45,7 @@ public class AccountService implements IAccountService {
         account.setCustomer(customer);
         Long accountNumber = 1000000000L + new Random().nextInt(900000000);
         account.setAccountNumber(accountNumber);
-        account.setAccountType(AccountTypeEnum.SAVING.name());
+        account.setAccountType(AccountTypeEnum.SAVING.toString());
         account.setBranchAddress(ApplicationConstants.ADDRESS);
         return account;
     }

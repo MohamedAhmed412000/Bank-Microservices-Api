@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.ToString;
 
@@ -18,12 +19,12 @@ public class BaseModel {
     @Column(name = "CREATED_AT", updatable = false)
     private LocalDateTime createdAt;
     @NotNull
-    @Max(value = 20)
+    @Size(max = 20)
     @Column(name = "CREATED_BY", updatable = false)
     private String createdBy;
     @Column(name = "UPDATED_AT", insertable = false)
     private LocalDateTime updatedAt;
-    @Max(value = 20)
+    @Size(max = 20)
     @Column(name = "UPDATED_BY", insertable = false)
     private String updatedBy;
 
