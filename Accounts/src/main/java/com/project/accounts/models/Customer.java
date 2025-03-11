@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @ToString(callSuper = true)
@@ -30,6 +31,11 @@ public class Customer extends BaseModel {
     @Column(name = "MOBILE_NUMBER")
     private String mobileNumber;
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private List<Account> accounts;
+    private List<Account> accounts = new ArrayList<>();
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+        account.setCustomer(this);
+    }
 
 }

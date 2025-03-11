@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponseDto> handleCustomerAlreadyExistsException(
         CustomerAlreadyExistsException e, WebRequest webRequest) {
         ErrorResponseDto errorResponse = new ErrorResponseDto(
-            webRequest.getContextPath(),
+            webRequest.getDescription(false),
             HttpStatus.BAD_REQUEST,
             e.getMessage(),
             LocalDateTime.now()

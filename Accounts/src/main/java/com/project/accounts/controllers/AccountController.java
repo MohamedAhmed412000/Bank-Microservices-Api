@@ -4,7 +4,6 @@ import com.project.accounts.dto.CustomerDto;
 import com.project.accounts.dto.ResponseDto;
 import com.project.accounts.enums.ResponsesEnum;
 import com.project.accounts.services.IAccountService;
-import com.project.accounts.services.impl.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

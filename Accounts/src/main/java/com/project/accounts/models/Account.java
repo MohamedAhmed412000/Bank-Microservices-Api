@@ -1,7 +1,6 @@
 package com.project.accounts.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -14,11 +13,10 @@ import lombok.*;
 public class Account extends BaseModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ACCOUNT_NUMBER", unique = true)
+    @Column(name = "ACCOUNT_NUMBER")
     private Long accountNumber;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CUSTOMER_ID", updatable = false, nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID", updatable = false, nullable = false)
     @ToString.Exclude
     private Customer customer;
     @NotNull
