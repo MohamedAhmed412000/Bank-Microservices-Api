@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,6 +26,14 @@ public class AccountController {
             ResponsesEnum.RESPONSE_CREATED.getMessage(),
             ResponsesEnum.RESPONSE_CREATED.getStatusCode().toString()
         ));
+    }
+
+    @GetMapping(value = "/fetch-accounts")
+    public ResponseEntity<CustomerDto> fetchAccount(
+        @RequestParam(name = "mobile-number") String mobileNumber
+    ) {
+        CustomerDto customerDto = iAccountService.fetchAccounts(mobileNumber);
+        return ResponseEntity.status(HttpStatus.OK).body(customerDto);
     }
 
 }
