@@ -30,7 +30,7 @@ public class Customer extends BaseModel {
     @Size(min = 11, max = 11)
     @Column(name = "MOBILE_NUMBER")
     private String mobileNumber;
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Account> accounts = new ArrayList<>();
 
     public void addAccount(Account account) {

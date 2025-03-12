@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Getter @Setter
-@ToString(onlyExplicitlyIncluded = true, callSuper = true)
+@ToString(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "ACCOUNT")

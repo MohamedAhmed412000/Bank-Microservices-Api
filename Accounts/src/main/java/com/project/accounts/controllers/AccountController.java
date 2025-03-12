@@ -35,5 +35,23 @@ public class AccountController {
         CustomerDto customerDto = iAccountService.fetchAccounts(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(customerDto);
     }
+    
+    @PutMapping(value = "/update-customer-info", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<ResponseDto> updateCustomerDetails(
+        @RequestBody CustomerDto customerDto
+    ) {
+        boolean isUpdated = iAccountService.updateAccount(customerDto);
+        if (isUpdated) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(
+                ResponsesEnum.RESPONSE_OK.getMessage(),
+                ResponsesEnum.RESPONSE_OK.getStatusCode().toString()
+            ));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseDto(
+                ResponsesEnum.RESPONSE_BAD_REQUEST.getMessage(),
+                ResponsesEnum.RESPONSE_BAD_REQUEST.getStatusCode().toString()
+            ));
+        }
+    }
 
 }

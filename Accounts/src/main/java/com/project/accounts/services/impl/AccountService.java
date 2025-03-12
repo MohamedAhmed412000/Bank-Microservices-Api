@@ -17,9 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,16 +49,42 @@ public class AccountService implements IAccountService {
             AccountMapper.mapToAccountDto(account, new AccountDto())).toList());
         return customerDto;
     }
-
+    
+    /**
+     * @param customerDto is the customer account with his accounts
+     * @return boolean to indicate if the customer details is updated
+     */
+    @Override
+    public boolean updateAccount(CustomerDto customerDto) {
+        Customer customer = customerRepository.findByMobileNumber(customerDto.getMobileNumber())
+            .orElseThrow(() -> new ResourceNotFoundException("Customer", "Mobile number",
+                customerDto.getMobileNumber())
+        );
+        Set<String> customerAccountNumbers = customer.getAccounts().stream().
+            map(account -> account.getAccountNumber().toString()).
+            collect(Collectors.toSet());
+        
+        customerDto.getAccounts().forEach(accountDto -> {
+            if (accountDto.getAccountNumber() == null || !customerAccountNumbers.contains(
+                accountDto.getAccountNumber().toString())) {
+                accountRepository.save(createNewAccount(customer));
+            } else {
+                accountRepository.save(AccountMapper.mapToAccount(accountDto, new Account()));
+            }
+        });
+        customerRepository.save(CustomerMapper.mapToCustomer(customerDto, customer));
+        return true;
+    }
+    
     private Account createNewAccount(Customer customer) {
         Account account = new Account();
-        customer.addAccount(account);
         Long accountNumber = 1000000000L + new Random().nextInt(900000000);
         account.setAccountNumber(accountNumber);
         account.setAccountType(AccountTypeEnum.SAVING.toString());
         account.setBranchAddress(ApplicationConstants.ADDRESS);
         account.setCreatedBy("SYSTEM");
         account.setCreatedAt(LocalDateTime.now());
+        customer.addAccount(account);
         return account;
     }
 
