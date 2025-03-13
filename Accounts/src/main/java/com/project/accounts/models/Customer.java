@@ -34,7 +34,6 @@ public class Customer extends BaseModel {
     private List<Account> accounts = new ArrayList<>();
 
     public void addAccount(Account account) {
-        accounts.add(account);
         account.setCustomer(this);
     }
 

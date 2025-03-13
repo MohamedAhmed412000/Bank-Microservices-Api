@@ -54,4 +54,22 @@ public class AccountController {
         }
     }
 
+    @DeleteMapping(value = "/delete-customer-info")
+    public ResponseEntity<ResponseDto> deleteCustomerInfo(
+        @RequestParam(name = "mobile-number") String mobileNumber
+    ) {
+        boolean isDeleted = iAccountService.deleteAccount(mobileNumber);
+        if (isDeleted) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(
+                ResponsesEnum.RESPONSE_OK.getMessage(),
+                ResponsesEnum.RESPONSE_OK.getStatusCode().toString()
+            ));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDto(
+                ResponsesEnum.RESPONSE_BAD_REQUEST.getMessage(),
+                ResponsesEnum.RESPONSE_BAD_REQUEST.getStatusCode().toString()
+            ));
+        }
+    }
+
 }

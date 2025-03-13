@@ -5,6 +5,7 @@ import com.project.accounts.dto.AccountDto;
 import com.project.accounts.dto.CustomerDto;
 import com.project.accounts.enums.AccountTypeEnum;
 import com.project.accounts.exceptions.CustomerAlreadyExistsException;
+import com.project.accounts.exceptions.CustomerMaxAccountsReachedException;
 import com.project.accounts.exceptions.ResourceNotFoundException;
 import com.project.accounts.mappers.AccountMapper;
 import com.project.accounts.mappers.CustomerMapper;
@@ -18,11 +19,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class AccountService implements IAccountService {
+
+    private final static int MAX_CUSTOMER_ACCOUNTS = 3;
     
     private final AccountRepository accountRepository;
     private final CustomerRepository customerRepository;
@@ -63,19 +67,42 @@ public class AccountService implements IAccountService {
         Set<String> customerAccountNumbers = customer.getAccounts().stream().
             map(account -> account.getAccountNumber().toString()).
             collect(Collectors.toSet());
-        
+        AtomicInteger customerAccountsNumber = new AtomicInteger(customerAccountNumbers.size());
+
+        List<Account> customerAccounts = new ArrayList<>();
         customerDto.getAccounts().forEach(accountDto -> {
             if (accountDto.getAccountNumber() == null || !customerAccountNumbers.contains(
                 accountDto.getAccountNumber().toString())) {
-                accountRepository.save(createNewAccount(customer));
+                if (customerAccountsNumber.get() < MAX_CUSTOMER_ACCOUNTS) {
+                    customerAccounts.add(createNewAccount(customer));
+                    customerAccountsNumber.getAndIncrement();
+                } else {
+                    throw new CustomerMaxAccountsReachedException(
+                        String.format("Customer exceeded the max account numbers count: %s", MAX_CUSTOMER_ACCOUNTS));
+                }
             } else {
-                accountRepository.save(AccountMapper.mapToAccount(accountDto, new Account()));
+                customerAccounts.add(AccountMapper.mapToAccount(accountDto, new Account()));
             }
         });
+        accountRepository.saveAll(customerAccounts);
         customerRepository.save(CustomerMapper.mapToCustomer(customerDto, customer));
         return true;
     }
-    
+
+    /**
+     * @param mobileNumber of the customer
+     * @return boolean to indicate if the customer is deleted
+     */
+    @Override
+    public boolean deleteAccount(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+            () -> new ResourceNotFoundException("Customer", "Mobile number", mobileNumber)
+        );
+        accountRepository.deleteAccountsByCustomerId(customer.getId());
+        customerRepository.deleteCustomersById(customer.getId());
+        return true;
+    }
+
     private Account createNewAccount(Customer customer) {
         Account account = new Account();
         Long accountNumber = 1000000000L + new Random().nextInt(900000000);

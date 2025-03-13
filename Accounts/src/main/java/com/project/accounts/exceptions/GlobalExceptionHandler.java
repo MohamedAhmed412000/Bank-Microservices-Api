@@ -36,4 +36,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
+    @ExceptionHandler(CustomerMaxAccountsReachedException.class)
+    public ResponseEntity<ErrorResponseDto> handleCustomerMaxAccountsException(
+        CustomerMaxAccountsReachedException e, WebRequest webRequest) {
+        ErrorResponseDto errorResponse = new ErrorResponseDto(
+            webRequest.getDescription(false),
+            HttpStatus.BAD_REQUEST,
+            e.getMessage(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
+
 }
