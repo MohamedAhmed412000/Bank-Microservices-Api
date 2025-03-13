@@ -25,8 +25,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AccountService implements IAccountService {
-
-    private final static int MAX_CUSTOMER_ACCOUNTS = 3;
     
     private final AccountRepository accountRepository;
     private final CustomerRepository customerRepository;
@@ -73,12 +71,13 @@ public class AccountService implements IAccountService {
         customerDto.getAccounts().forEach(accountDto -> {
             if (accountDto.getAccountNumber() == null || !customerAccountNumbers.contains(
                 accountDto.getAccountNumber().toString())) {
-                if (customerAccountsNumber.get() < MAX_CUSTOMER_ACCOUNTS) {
+                if (customerAccountsNumber.get() < ApplicationConstants.MAX_CUSTOMER_ACCOUNTS) {
                     customerAccounts.add(createNewAccount(customer));
                     customerAccountsNumber.getAndIncrement();
                 } else {
                     throw new CustomerMaxAccountsReachedException(
-                        String.format("Customer exceeded the max account numbers count: %s", MAX_CUSTOMER_ACCOUNTS));
+                        String.format("Customer exceeded the max account numbers count: %s",
+                            ApplicationConstants.MAX_CUSTOMER_ACCOUNTS));
                 }
             } else {
                 customerAccounts.add(AccountMapper.mapToAccount(accountDto, new Account()));
