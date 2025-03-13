@@ -17,7 +17,6 @@ import com.project.accounts.services.IAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -108,8 +107,6 @@ public class AccountService implements IAccountService {
         account.setAccountNumber(accountNumber);
         account.setAccountType(AccountTypeEnum.SAVING.toString());
         account.setBranchAddress(ApplicationConstants.ADDRESS);
-        account.setCreatedBy("SYSTEM");
-        account.setCreatedAt(LocalDateTime.now());
         customer.addAccount(account);
         return account;
     }
