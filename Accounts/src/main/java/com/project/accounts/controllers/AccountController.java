@@ -1,9 +1,15 @@
 package com.project.accounts.controllers;
 
 import com.project.accounts.dto.CustomerDto;
+import com.project.accounts.dto.ErrorResponseDto;
 import com.project.accounts.dto.ResponseDto;
 import com.project.accounts.enums.ResponsesEnum;
 import com.project.accounts.services.IAccountService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +19,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(
+    name = "CRUD Rest APIs for Accounts Microservice",
+    description = "Provides RESTFUL APIs for managing accounts."
+)
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/accounts", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -21,6 +31,22 @@ public class AccountController {
 
     private final IAccountService iAccountService;
 
+    @Operation(
+        summary = "Create a new account for a customer",
+        description = "Creates a new account for a customer based on the provided customer details.",
+        responses = {
+            @ApiResponse(
+                responseCode = "201",
+                description = "Account created successfully.",
+                content = @Content(schema = @Schema(implementation = ResponseDto.class))
+            ),
+            @ApiResponse(
+                responseCode = "400",
+                description = "Bad request. Provided customer details are invalid.",
+                content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+        }
+    )
     @PostMapping(value = "/create-account", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseDto> createAccount(
         @Valid @RequestBody CustomerDto customerDto
@@ -32,6 +58,22 @@ public class AccountController {
         ));
     }
 
+    @Operation(
+        summary = "Fetch account details for a customer",
+        description = "Fetches account details for a customer based on the provided mobile number.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Account details retrieved successfully",
+                content = @Content(schema = @Schema(implementation = CustomerDto.class))
+            ),
+            @ApiResponse(
+                responseCode = "404",
+                description = "Account not found for the provided mobile number",
+                content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+        }
+    )
     @GetMapping(value = "/fetch-accounts")
     public ResponseEntity<CustomerDto> fetchAccount(
         @RequestParam(name = "mobile-number")
@@ -41,7 +83,23 @@ public class AccountController {
         CustomerDto customerDto = iAccountService.fetchAccounts(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(customerDto);
     }
-    
+
+    @Operation(
+        summary = "Update customer details",
+        description = "Updates customer details for a customer based on the provided mobile number.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Customer details updated successfully",
+                content = @Content(schema = @Schema(implementation = ResponseDto.class))
+            ),
+            @ApiResponse(
+                responseCode = "400",
+                description = "Bad request. Provided customer details are invalid.",
+                content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+        }
+    )
     @PutMapping(value = "/update-customer-info", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseDto> updateCustomerDetails(
         @Valid @RequestBody CustomerDto customerDto
@@ -60,6 +118,22 @@ public class AccountController {
         }
     }
 
+    @Operation(
+        summary = "Delete Customer Details",
+        description = "Delete customer details for a customer based on the provided mobile number.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Customer details deleted successfully",
+                content = @Content(schema = @Schema(implementation = ResponseDto.class))
+            ),
+            @ApiResponse(
+                responseCode = "404",
+                description = "Account not found for the provided mobile number",
+                content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+        }
+    )
     @DeleteMapping(value = "/delete-customer-info")
     public ResponseEntity<ResponseDto> deleteCustomerInfo(
         @RequestParam(name = "mobile-number")
