@@ -1,0 +1,12 @@
+In the Pom.xml file
+
+1- add the following property after the version
+<packaging>jar</packaging>
+
+2- In the spring maven plugin configuration add the image name
+<image>
+    <name>loans:v1.0</name>
+</image>
+
+3- in the root path of the project run the following command
+mvn spring-boot:build-image

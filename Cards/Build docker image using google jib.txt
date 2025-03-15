@@ -1,0 +1,29 @@
+In the Pom.xml file
+
+1- add the following property after the version
+<packaging>jar</packaging>
+
+2- In the plugins section add this plugin and configure the image name
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>3.3.2</version>
+    <configuration>
+        <from>
+            <auth>
+                <username>#Username</username>
+                <password>#Password</password>
+            </auth>
+        </from>
+        <to>
+            <image>cards:v1.0</image>
+        </to>
+    </configuration>
+</plugin>
+
+3- in the root path of the project run the following command
+mvn compile jib:dockerBuild
+
+4- If docker is not installed we still can build the docker image using this command
+mvn compile jib:build
+
