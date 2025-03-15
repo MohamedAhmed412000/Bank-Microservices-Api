@@ -9,7 +9,7 @@ import lombok.*;
 @ToString(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name = "LOANS")
+@Table(name = "LOAN")
 public class Loan extends BaseModel {
 
     @Id
