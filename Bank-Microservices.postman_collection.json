@@ -301,57 +301,6 @@
 					},
 					"response": [
 						{
-							"name": "failed to load customer",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"accounts\": [\r\n        {\r\n            \"accountNumber\": 1649470385,\r\n            \"accountType\": \"SAVING\",\r\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\r\n        }, {\r\n            \"accountType\": \"SAVING\",\r\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\r\n        }\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{accounts-url}}/api/v1/accounts/update-customer-info",
-									"host": [
-										"{{accounts-url}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"accounts",
-										"update-customer-info"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 12 Mar 2025 15:39:37 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"apiPath\": \"uri=/api/v1/accounts/update-customer-info\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567890\",\n    \"errorTime\": \"2025-03-12T17:39:37.1505399\"\n}"
-						},
-						{
 							"name": "success",
 							"originalRequest": {
 								"method": "PUT",
@@ -405,6 +354,57 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Success\",\n    \"statusCode\": \"200 OK\"\n}"
+						},
+						{
+							"name": "failed to load customer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"accounts\": [\r\n        {\r\n            \"accountNumber\": 1649470385,\r\n            \"accountType\": \"SAVING\",\r\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\r\n        }, {\r\n            \"accountType\": \"SAVING\",\r\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{accounts-url}}/api/v1/accounts/update-customer-info",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts",
+										"update-customer-info"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Mar 2025 15:39:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/v1/accounts/update-customer-info\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567890\",\n    \"errorTime\": \"2025-03-12T17:39:37.1505399\"\n}"
 						},
 						{
 							"name": "max accounts reached",
@@ -485,54 +485,6 @@
 					},
 					"response": [
 						{
-							"name": "failed to load customer",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{accounts-url}}/api/v1/accounts/delete-customer-info?mobile-number=01234567890",
-									"host": [
-										"{{accounts-url}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"accounts",
-										"delete-customer-info"
-									],
-									"query": [
-										{
-											"key": "mobile-number",
-											"value": "01234567890"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 12 Mar 2025 19:37:05 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"apiPath\": \"uri=/api/v1/accounts/delete-customer-info\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567890\",\n    \"errorTime\": \"2025-03-12T21:37:05.874287\"\n}"
-						},
-						{
 							"name": "success",
 							"originalRequest": {
 								"method": "DELETE",
@@ -583,6 +535,117 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Success\",\n    \"statusCode\": \"200 OK\"\n}"
+						},
+						{
+							"name": "failed to load customer",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/api/v1/accounts/delete-customer-info?mobile-number=01234567890",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts",
+										"delete-customer-info"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 12 Mar 2025 19:37:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/v1/accounts/delete-customer-info\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567890\",\n    \"errorTime\": \"2025-03-12T21:37:05.874287\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get build version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/api/build-version",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"api",
+								"build-version"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/api/build-version",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 07:23:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "1.0"
 						}
 					]
 				}
@@ -1090,6 +1153,63 @@
 					},
 					"response": [
 						{
+							"name": "success(list)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/api/v1/cards/delete-card-info?mobileNumber=01234567890",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"delete-card-info"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "01234567890"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4973250409577124",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Mar 2025 14:26:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"statusCode\": \"200 OK\"\n}"
+						},
+						{
 							"name": "success(one)",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1200,63 +1320,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Not Found\",\n    \"statusCode\": \"404 NOT_FOUND\"\n}"
-						},
-						{
-							"name": "success(list)",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{cards-url}}/api/v1/cards/delete-card-info?mobileNumber=01234567890",
-									"host": [
-										"{{cards-url}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"cards",
-										"delete-card-info"
-									],
-									"query": [
-										{
-											"key": "mobileNumber",
-											"value": "01234567890"
-										},
-										{
-											"key": "cardNumber",
-											"value": "4973250409577124",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 15 Mar 2025 14:26:18 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Success\",\n    \"statusCode\": \"200 OK\"\n}"
 						}
 					]
 				}
@@ -1822,17 +1885,17 @@
 	"variable": [
 		{
 			"key": "accounts-url",
-			"value": "http://localhost:8081",
+			"value": "http://localhost:8091",
 			"type": "string"
 		},
 		{
 			"key": "loans-url",
-			"value": "http://localhost:8082",
+			"value": "http://localhost:8092",
 			"type": "string"
 		},
 		{
 			"key": "cards-url",
-			"value": "http://localhost:8083",
+			"value": "http://localhost:8093",
 			"type": "string"
 		}
 	]
