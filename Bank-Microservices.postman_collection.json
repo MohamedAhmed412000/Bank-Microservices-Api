@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "36286ada-37cb-4140-b38e-49d1cb3caa2b",
+		"_postman_id": "827ee6e8-f1c5-45b1-8ec7-80237969375f",
 		"name": "Bank-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31799000"
+		"_exporter_id": "32902590"
 	},
 	"item": [
 		{
@@ -1448,6 +1448,195 @@
 							"body": "{\n    \"message\": \"Not Found\",\n    \"statusCode\": \"404 NOT_FOUND\"\n}"
 						}
 					]
+				},
+				{
+					"name": "build version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cards-url}}/api/build-version",
+							"host": [
+								"{{cards-url}}"
+							],
+							"path": [
+								"api",
+								"build-version"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/api/build-version",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 07:23:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "1.0"
+						}
+					]
+				},
+				{
+					"name": "java configurations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cards-url}}/api/java-config",
+							"host": [
+								"{{cards-url}}"
+							],
+							"path": [
+								"api",
+								"java-config"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/api/java-config",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"api",
+										"java-config"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 10:30:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"maven.home\": null,\n    \"java.version\": null,\n    \"java.home\": \"C:\\\\Program Files\\\\Java\\\\jdk-17\"\n}"
+						}
+					]
+				},
+				{
+					"name": "customer support info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cards-url}}/api/support-info",
+							"host": [
+								"{{cards-url}}"
+							],
+							"path": [
+								"api",
+								"support-info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/api/support-info",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 11:00:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"This is the customer support info\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Developer\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1980,6 +2169,195 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"apiPath\": \"uri=/api/v1/loans/delete-loan-info\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Loan not found with the given data Mobile Number: 01234567894\",\n    \"errorTime\": \"2025-03-14T17:11:52.1576203\"\n}"
+						}
+					]
+				},
+				{
+					"name": "build version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/api/build-version",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"api",
+								"build-version"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/api/build-version",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 07:23:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "1.0"
+						}
+					]
+				},
+				{
+					"name": "java configurations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/api/java-config",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"api",
+								"java-config"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/api/java-config",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"api",
+										"java-config"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 10:30:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"maven.home\": null,\n    \"java.version\": null,\n    \"java.home\": \"C:\\\\Program Files\\\\Java\\\\jdk-17\"\n}"
+						}
+					]
+				},
+				{
+					"name": "customer support info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/api/support-info",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"api",
+								"support-info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/api/support-info",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Mar 2025 11:00:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"This is the customer support info\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Developer\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
 						}
 					]
 				}

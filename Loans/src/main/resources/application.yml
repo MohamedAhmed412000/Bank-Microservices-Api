@@ -16,3 +16,20 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+
+build:
+  version: 1.0
+
+accounts:
+  message: This is the customer support info for local environment
+  accountInfo:
+    name: John Doe - Developer
+    email: john.doe@example.com
+  contactList:
+    - 01234567890
+    - 01234567891
+
