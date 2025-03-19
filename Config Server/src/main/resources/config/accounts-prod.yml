@@ -1,0 +1,11 @@
+build:
+  version: 3.0
+
+accounts:
+  message: This is the customer support info for Prod environment
+  accountInfo:
+    name: John Doe - Product Owner
+    email: john.doe@example.com
+  contactList:
+    - 01234567890
+    - 01234567891
