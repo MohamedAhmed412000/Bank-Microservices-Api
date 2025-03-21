@@ -2362,6 +2362,464 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Config Server",
+			"item": [
+				{
+					"name": "fetch accounts microservice configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-url}}/accounts/prod",
+							"host": [
+								"{{config-url}}"
+							],
+							"path": [
+								"accounts",
+								"prod"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/accounts/default",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"accounts",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:05:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/accounts.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "qa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/accounts/qa",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"accounts",
+										"qa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:05:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"qa\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/accounts-qa.yml\",\n            \"source\": {\n                \"build.version\": 2,\n                \"accounts.message\": \"This is the customer support info for QA environment\",\n                \"accounts.accountInfo.name\": \"John Doe - QA Team Lead\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/accounts.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "prod",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/accounts/prod",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"accounts",
+										"prod"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:05:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"prod\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/accounts-prod.yml\",\n            \"source\": {\n                \"build.version\": 3,\n                \"accounts.message\": \"This is the customer support info for Prod environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Product Owner\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/accounts.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch cards microservice configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-url}}/cards/prod",
+							"host": [
+								"{{config-url}}"
+							],
+							"path": [
+								"cards",
+								"prod"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/cards/default",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"cards",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:06:31 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"cards\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/cards.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "qa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/cards/qa",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"cards",
+										"qa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:06:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"cards\",\n    \"profiles\": [\n        \"qa\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/cards-qa.yml\",\n            \"source\": {\n                \"build.version\": 2,\n                \"accounts.message\": \"This is the customer support info for QA environment\",\n                \"accounts.accountInfo.name\": \"John Doe - QA Team Lead\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/cards.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "prod",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/cards/prod",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"cards",
+										"prod"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:07:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"cards\",\n    \"profiles\": [\n        \"prod\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/cards-prod.yml\",\n            \"source\": {\n                \"build.version\": 3,\n                \"accounts.message\": \"This is the customer support info for Prod environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Product Owner\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/cards.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch loans microservice configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-url}}/loans/prod",
+							"host": [
+								"{{config-url}}"
+							],
+							"path": [
+								"loans",
+								"prod"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/loans/default",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"loans",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:07:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"loans\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "qa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/loans/qa",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"loans",
+										"qa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:08:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"loans\",\n    \"profiles\": [\n        \"qa\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans-qa.yml\",\n            \"source\": {\n                \"build.version\": 2,\n                \"accounts.message\": \"This is the customer support info for QA environment\",\n                \"accounts.accountInfo.name\": \"John Doe - QA Team Lead\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "prod",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-url}}/loans/prod",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"loans",
+										"prod"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 09:08:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"loans\",\n    \"profiles\": [\n        \"prod\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans-prod.yml\",\n            \"source\": {\n                \"build.version\": 3,\n                \"accounts.message\": \"This is the customer support info for Prod environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Product Owner\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -2401,6 +2859,11 @@
 			"key": "cards-url",
 			"value": "http://localhost:8093",
 			"type": "string"
+		},
+		{
+			"key": "config-url",
+			"value": "http://localhost:8071",
+			"type": "default"
 		}
 	]
 }
