@@ -16,10 +16,20 @@ spring:
 #        native:
 #          search-locations: "file:///E://Coding//Spring Projects//Microservices//configurations"
 #          search-locations: "classpath:/config"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 server:
   port: 8071
 
 encrypt:
   key: "16ff33913e7911a3cb71f628cbcc612c086a8ceb94ce10020f1c6394884884a5"
-
