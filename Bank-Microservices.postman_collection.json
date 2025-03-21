@@ -774,6 +774,69 @@
 							"body": "{\n    \"message\": \"This is the customer support info\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Developer\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "refresh configuration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/actuator/refresh",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/refresh",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 12:53:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"config.client.version\",\n    \"accounts.message\"\n]"
+						}
+					]
 				}
 			]
 		},
@@ -1637,6 +1700,69 @@
 							"body": "{\n    \"message\": \"This is the customer support info\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Developer\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "refresh configuration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{cards-url}}/actuator/refresh",
+							"host": [
+								"{{cards-url}}"
+							],
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/actuator/refresh",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 12:54:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"config.client.version\"\n]"
+						}
+					]
 				}
 			]
 		},
@@ -2360,6 +2486,69 @@
 							"body": "{\n    \"message\": \"This is the customer support info\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Developer\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "refresh configuration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/actuator/refresh",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/actuator/refresh",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 12:54:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"config.client.version\",\n    \"loans.message\"\n]"
+						}
+					]
 				}
 			]
 		},
@@ -2816,6 +3005,164 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"loans\",\n    \"profiles\": [\n        \"prod\"\n    ],\n    \"label\": null,\n    \"version\": null,\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans-prod.yml\",\n            \"source\": {\n                \"build.version\": 3,\n                \"accounts.message\": \"This is the customer support info for Prod environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Product Owner\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        },\n        {\n            \"name\": \"file:/E:/Coding/Spring Projects/Microservices/configurations/loans.yml\",\n            \"source\": {\n                \"build.version\": 1,\n                \"accounts.message\": \"This is the customer support info for local environment\",\n                \"accounts.accountInfo.name\": \"John Doe - Developer\",\n                \"accounts.accountInfo.email\": \"john.doe@example.com\",\n                \"accounts.contactList[0]\": \"01234567890\",\n                \"accounts.contactList[1]\": \"01234567891\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "encrypt value",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "john.doe@example.com",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{config-url}}/encrypt",
+							"host": [
+								"{{config-url}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "john.doe@example.com",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{config-url}}/encrypt",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"encrypt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 11:59:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "642d69154b8bf02210003c8de403660736f9c3cf2d46430c31a62ae4364a8e8604b823ae9f67bc5112f9d8373417da34"
+						}
+					]
+				},
+				{
+					"name": "decrypt value",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "642d69154b8bf02210003c8de403660736f9c3cf2d46430c31a62ae4364a8e8604b823ae9f67bc5112f9d8373417da34",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{config-url}}/decrypt",
+							"host": [
+								"{{config-url}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "642d69154b8bf02210003c8de403660736f9c3cf2d46430c31a62ae4364a8e8604b823ae9f67bc5112f9d8373417da34",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{config-url}}/decrypt",
+									"host": [
+										"{{config-url}}"
+									],
+									"path": [
+										"decrypt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Mar 2025 12:25:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "john.doe@example.com"
 						}
 					]
 				}
