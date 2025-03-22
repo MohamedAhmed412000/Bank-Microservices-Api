@@ -3,6 +3,19 @@ services:
     networks:
       - nextgen-bank
 
+  db-base:
+    image: mysql
+    extends:
+      service: network-deploy-service
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      start_period: 10s
+      retries: 10
+      interval: 10s
+      timeout: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+
   microservice-base:
     extends:
       service: network-deploy-service
@@ -10,8 +23,6 @@ services:
       resources:
         limits:
           memory: 700m
-    environment:
-      SPRING_RABBITMQ_HOST: "rabbitmq"
 
   configserver-deploy-base:
     extends:
@@ -19,3 +30,5 @@ services:
     environment:
       SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
       SPRING_PROFILES_ACTIVE: "qa"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "root"
