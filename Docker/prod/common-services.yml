@@ -1,0 +1,21 @@
+services:
+  network-deploy-service:
+    networks:
+      - nextgen-bank
+
+  microservice-base:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_RABBITMQ_HOST: "rabbitmq"
+
+  configserver-deploy-base:
+    extends:
+      service: microservice-base
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
+      SPRING_PROFILES_ACTIVE: "prod"

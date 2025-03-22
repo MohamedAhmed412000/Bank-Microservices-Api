@@ -128,7 +128,7 @@
                 <version>3.3.2</version>
                 <configuration>
                     <to>
-                        <image>mohamedahmed412000/cards:v1.0</image>
+                        <image>mohamedahmed412000/cards:v2.0</image>
                     </to>
                 </configuration>
             </plugin>
