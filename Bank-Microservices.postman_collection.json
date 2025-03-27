@@ -892,6 +892,132 @@
 							"body": null
 						}
 					]
+				},
+				{
+					"name": "actuator info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/actuator/info",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/info",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:19:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"app\": {\n        \"name\": \"accounts\",\n        \"description\": \"Account Management Service\",\n        \"version\": \"1.0.0\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "shutdown",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/actuator/shutdown",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/shutdown",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:30:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Shutting down, bye...\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1873,6 +1999,122 @@
 							"body": null
 						}
 					]
+				},
+				{
+					"name": "actuator info",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/actuator/info",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:20:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"app\": {\n        \"name\": \"cards\",\n        \"description\": \"Cards Management Service\",\n        \"version\": \"1.0.0\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "shutdown",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{cards-url}}/actuator/shutdown",
+							"host": [
+								"{{cards-url}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{cards-url}}/actuator/shutdown",
+									"host": [
+										"{{cards-url}}"
+									],
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:31:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Shutting down, bye...\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -2714,6 +2956,132 @@
 							"body": null
 						}
 					]
+				},
+				{
+					"name": "actuator info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/actuator/info",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/actuator/info",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:20:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"app\": {\n        \"name\": \"loans\",\n        \"description\": \"Loans Management Service\",\n        \"version\": \"1.0.0\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "shutdown",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{loans-url}}/actuator/shutdown",
+							"host": [
+								"{{loans-url}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{loans-url}}/actuator/shutdown",
+									"host": [
+										"{{loans-url}}"
+									],
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:32:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Shutting down, bye...\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -3411,6 +3779,95 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Discovery Server",
+			"item": [
+				{
+					"name": "fetch registered apps",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{discovery-url}}/eureka/apps",
+							"host": [
+								"{{discovery-url}}"
+							],
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{discovery-url}}/eureka/apps",
+									"host": [
+										"{{discovery-url}}"
+									],
+									"path": [
+										"eureka",
+										"apps"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "683"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 09:25:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"applications\": {\n        \"versions__delta\": \"1\",\n        \"apps__hashcode\": \"UP_3_\",\n        \"application\": [\n            {\n                \"name\": \"LOANS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.139.1:loans:8092\",\n                        \"hostName\": \"192.168.139.1\",\n                        \"app\": \"LOANS\",\n                        \"ipAddr\": \"192.168.139.1\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 8092,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743066976807,\n                            \"lastRenewalTimestamp\": 1743067607280,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743066976807\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"8092\"\n                        },\n                        \"homePageUrl\": \"http://192.168.139.1:8092/\",\n                        \"statusPageUrl\": \"http://192.168.139.1:8092/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.139.1:8092/actuator/health\",\n                        \"vipAddress\": \"loans\",\n                        \"secureVipAddress\": \"loans\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743066976807\",\n                        \"lastDirtyTimestamp\": \"1743066976775\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            },\n            {\n                \"name\": \"ACCOUNTS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.139.1:accounts:8091\",\n                        \"hostName\": \"192.168.139.1\",\n                        \"app\": \"ACCOUNTS\",\n                        \"ipAddr\": \"192.168.139.1\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 8091,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743064316616,\n                            \"lastRenewalTimestamp\": 1743067619557,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743064316616\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"8091\"\n                        },\n                        \"homePageUrl\": \"http://192.168.139.1:8091/\",\n                        \"statusPageUrl\": \"http://192.168.139.1:8091/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.139.1:8091/actuator/health\",\n                        \"vipAddress\": \"accounts\",\n                        \"secureVipAddress\": \"accounts\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743064316617\",\n                        \"lastDirtyTimestamp\": \"1743064316562\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            },\n            {\n                \"name\": \"CARDS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.139.1:cards:8093\",\n                        \"hostName\": \"192.168.139.1\",\n                        \"app\": \"CARDS\",\n                        \"ipAddr\": \"192.168.139.1\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 8093,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743064800451,\n                            \"lastRenewalTimestamp\": 1743067592881,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743064800451\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"8093\"\n                        },\n                        \"homePageUrl\": \"http://192.168.139.1:8093/\",\n                        \"statusPageUrl\": \"http://192.168.139.1:8093/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.139.1:8093/actuator/health\",\n                        \"vipAddress\": \"cards\",\n                        \"secureVipAddress\": \"cards\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743064800451\",\n                        \"lastDirtyTimestamp\": \"1743064800420\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -3454,6 +3911,11 @@
 		{
 			"key": "config-url",
 			"value": "http://localhost:8071",
+			"type": "default"
+		},
+		{
+			"key": "discovery-url",
+			"value": "http://localhost:8070",
 			"type": "default"
 		}
 	]
