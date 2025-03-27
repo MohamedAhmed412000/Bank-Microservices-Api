@@ -1,84 +1,113 @@
 services:
   config-server:
-    image: "mohamedahmed412000/config-server:v1.0"
+    image: "mohamedahmed412000/config-server:v3.0"
     container_name: configserver-ms
     ports:
       - "8071:8071"
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:8071/actuator/health/readiness"]
-#      start the test after 10 seconds and if failed then retry 10 times with interval of 10 seconds
-#      between tests with maximum timeout for every test as 5 seconds
+      #      start the test after 10 seconds and if failed then retry 10 times with interval of 10 seconds
+      #      between tests with maximum timeout for every test as 5 seconds
+      start_period: 10s
+      retries: 10
+      interval: 10s
+      timeout: 5s
+    restart: unless-stopped
+    #    depends_on:
+    #      rabbitmq:
+    #        condition: service_healthy
+    extends:
+      file: common-services.yml
+      service: microservice-base
+
+  eureka-server:
+    image: "mohamedahmed412000/eureka-server:v1.0"
+    container_name: eurekaserver-ms
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8070/actuator/health/readiness" ]
+      #      start the test after 10 seconds and if failed then retry 10 times with interval of 10 seconds
+      #      between tests with maximum timeout for every test as 5 seconds
       start_period: 10s
       retries: 10
       interval: 10s
       timeout: 5s
     restart: unless-stopped
     depends_on:
-      rabbitmq:
+      config-server:
         condition: service_healthy
     extends:
       file: common-services.yml
-      service: microservice-base
+      service: configserver-deploy-base
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "mohamedahmed412000/accounts:v2.0"
+    image: "mohamedahmed412000/accounts:v4.0"
     container_name: accounts-ms
     ports:
       - "8091:8091"
     depends_on:
       config-server:
         condition: service_healthy
+      eureka-server:
+        condition: service_healthy
     extends:
       file: common-services.yml
-      service: configserver-deploy-base
+      service: eurekaserver-deploy-base
     environment:
       SPRING_APPLICATION_NAME: "accounts"
 
   loans:
-    image: "mohamedahmed412000/loans:v2.0"
+    image: "mohamedahmed412000/loans:v4.0"
     container_name: loans-ms
     ports:
       - "8092:8092"
     depends_on:
       config-server:
         condition: service_healthy
+      eureka-server:
+        condition: service_healthy
     extends:
       file: common-services.yml
-      service: configserver-deploy-base
+      service: eurekaserver-deploy-base
     environment:
       SPRING_APPLICATION_NAME: "loans"
 
   cards:
-    image: "mohamedahmed412000/cards:v2.0"
+    image: "mohamedahmed412000/cards:v4.0"
     container_name: cards-ms
     ports:
       - "8093:8093"
     depends_on:
       config-server:
         condition: service_healthy
+      eureka-server:
+        condition: service_healthy
     extends:
       file: common-services.yml
-      service: configserver-deploy-base
+      service: eurekaserver-deploy-base
     environment:
       SPRING_APPLICATION_NAME: "cards"
 
-  rabbitmq:
-    image: "rabbitmq:4.0-management"
-    container_name: rabbitmq
-    hostname: rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 5s
-    restart: unless-stopped
-    extends:
-      file: common-services.yml
-      service: network-deploy-service
+#  rabbitmq:
+#    image: "rabbitmq:4.0-management"
+#    container_name: rabbitmq
+#    hostname: rabbitmq
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+#    healthcheck:
+#      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 10
+#      start_period: 5s
+#    restart: unless-stopped
+#    extends:
+#      file: common-services.yml
+#      service: network-deploy-service
 
 networks:
   nextgen-bank:

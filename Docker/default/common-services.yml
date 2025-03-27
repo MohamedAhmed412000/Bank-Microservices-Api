@@ -10,8 +10,8 @@ services:
       resources:
         limits:
           memory: 700m
-    environment:
-      SPRING_RABBITMQ_HOST: "rabbitmq"
+#    environment:
+#      SPRING_RABBITMQ_HOST: "rabbitmq"
 
   configserver-deploy-base:
     extends:
@@ -19,3 +19,12 @@ services:
     environment:
       SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
       SPRING_PROFILES_ACTIVE: "default"
+
+  eurekaserver-deploy-base:
+    extends:
+      service: configserver-deploy-base
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
+      SPRING_PROFILES_ACTIVE: "default"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server:8070/eureka/"
+#      EUREKA_INSTANCE_PREFERIPADDRESS: false

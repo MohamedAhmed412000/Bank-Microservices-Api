@@ -246,8 +246,8 @@
 									]
 								}
 							},
-							"status": "Bad Request",
-							"code": 400,
+							"status": "Not Found",
+							"code": 404,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -269,6 +269,133 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"apiPath\": \"uri=/api/v1/accounts/fetch-accounts\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567890\",\n    \"errorTime\": \"2025-03-12T05:48:16.4610343\"\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch customer details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"fetch-customer-details"
+							],
+							"query": [
+								{
+									"key": "mobile-number",
+									"value": "01234567890"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"fetch-customer-details"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 13:32:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Johnie Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1234162713,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        },\n        {\n            \"accountNumber\": 1432333861,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250481777180\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        },\n        {\n            \"cardNumber\": \"4973250153975609\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": null\n}"
+						},
+						{
+							"name": "failed to load customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567894",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"fetch-customer-details"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567894"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 13:16:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/v1/customer/fetch-customer-details\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"message\": \"Customer not found with the given data Mobile number: 01234567894\",\n    \"errorTime\": \"2025-03-27T15:16:49.6265133\"\n}"
 						}
 					]
 				},
@@ -1326,8 +1453,8 @@
 									]
 								}
 							},
-							"status": "Bad Request",
-							"code": 400,
+							"status": "Not Found",
+							"code": 404,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
