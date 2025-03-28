@@ -142,6 +142,19 @@
 					</to>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.graalvm.buildtools</groupId>
+				<artifactId>native-maven-plugin</artifactId>
+				<configuration>
+					<buildArgs>
+						<buildArg>-Ob</buildArg>
+					</buildArgs>
+					<metadataRepository>
+						<enabled>true</enabled>
+						<version>0.3.18</version>
+					</metadataRepository>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

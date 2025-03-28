@@ -1,0 +1,21 @@
+1. Add Graalvm plugin to pom.xml file
+    <plugin>
+        <groupId>org.graalvm.buildtools</groupId>
+        <artifactId>native-maven-plugin</artifactId>
+        <configuration>
+            <buildArgs>
+                <buildArg>-Ob</buildArg>
+            </buildArgs>
+            <metadataRepository>
+                <enabled>true</enabled>
+                <version>0.3.18</version>
+            </metadataRepository>
+        </configuration>
+    </plugin>
+the argument -Ob to increase the speed in development only not in for production
+
+2. run the following command
+mvn clean -Pnative native:compile
+
+3. run the following command
+./target/<file-generated>.exe
