@@ -24,7 +24,5 @@ services:
     extends:
       service: configserver-deploy-base
     environment:
-      SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
-      SPRING_PROFILES_ACTIVE: "default"
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server:8070/eureka/"
 #      EUREKA_INSTANCE_PREFERIPADDRESS: false

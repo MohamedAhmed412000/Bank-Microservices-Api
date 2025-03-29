@@ -1,6 +1,6 @@
 services:
   config-server:
-    image: "mohamedahmed412000/config-server:v3.0"
+    image: "mohamedahmed412000/config-server:v4.0"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -27,8 +27,6 @@ services:
       - "8070:8070"
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8070/actuator/health/readiness" ]
-      #      start the test after 10 seconds and if failed then retry 10 times with interval of 10 seconds
-      #      between tests with maximum timeout for every test as 5 seconds
       start_period: 10s
       retries: 10
       interval: 10s
@@ -44,10 +42,16 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "mohamedahmed412000/accounts:v4.0"
+    image: "mohamedahmed412000/accounts:v5.0"
     container_name: accounts-ms
     ports:
       - "8091:8091"
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8091/actuator/health/readiness" ]
+      start_period: 10s
+      retries: 10
+      interval: 10s
+      timeout: 5s
     depends_on:
       config-server:
         condition: service_healthy
@@ -60,10 +64,16 @@ services:
       SPRING_APPLICATION_NAME: "accounts"
 
   loans:
-    image: "mohamedahmed412000/loans:v4.0"
+    image: "mohamedahmed412000/loans:v5.0"
     container_name: loans-ms
     ports:
       - "8092:8092"
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8092/actuator/health/readiness" ]
+      start_period: 10s
+      retries: 10
+      interval: 10s
+      timeout: 5s
     depends_on:
       config-server:
         condition: service_healthy
@@ -76,10 +86,16 @@ services:
       SPRING_APPLICATION_NAME: "loans"
 
   cards:
-    image: "mohamedahmed412000/cards:v4.0"
+    image: "mohamedahmed412000/cards:v5.0"
     container_name: cards-ms
     ports:
       - "8093:8093"
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8093/actuator/health/readiness" ]
+      start_period: 10s
+      retries: 10
+      interval: 10s
+      timeout: 5s
     depends_on:
       config-server:
         condition: service_healthy
@@ -90,6 +106,24 @@ services:
       service: eurekaserver-deploy-base
     environment:
       SPRING_APPLICATION_NAME: "cards"
+
+  api-gateway:
+    image: "mohamedahmed412000/api-gateway:v1.0"
+    container_name: apigateway-ms
+    ports:
+      - "8080:8080"
+    depends_on:
+      accounts:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+      loans:
+        condition: service_healthy
+    extends:
+      file: common-services.yml
+      service: eurekaserver-deploy-base
+    environment:
+      SPRING_APPLICATION_NAME: "apigateway"
 
 #  rabbitmq:
 #    image: "rabbitmq:4.0-management"

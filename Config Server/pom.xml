@@ -83,7 +83,7 @@
                 <version>3.3.2</version>
                 <configuration>
                     <to>
-                        <image>mohamedahmed412000/config-server:v3.0</image>
+                        <image>mohamedahmed412000/config-server:v4.0</image>
                     </to>
                 </configuration>
             </plugin>
