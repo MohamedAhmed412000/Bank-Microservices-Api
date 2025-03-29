@@ -7,5 +7,6 @@ public class ApplicationConstants {
     }
 
     public static final long LOAN_AMOUNT = 1_00_000L;
+    public static final String REQUEST_HEADER_NAME = "X-REQUEST-ID";
 
 }

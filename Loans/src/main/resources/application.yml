@@ -48,3 +48,9 @@ info:
     name: "loans"
     description: "Loans Management Service"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      project:
+        loans: DEBUG

@@ -1,5 +1,6 @@
 package com.project.accounts.controllers;
 
+import com.project.accounts.constants.ApplicationConstants;
 import com.project.accounts.dto.CustomerDetailsDto;
 import com.project.accounts.dto.ErrorResponseDto;
 import com.project.accounts.services.ICustomerService;
@@ -10,14 +11,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Tag(
     name = "CRUD Rest APIs for Customer Microservice",
     description = "Provides RESTFUL APIs for fetching customer Details."
@@ -49,11 +49,13 @@ public class CustomerController {
     )
     @GetMapping(value = "/fetch-customer-details")
     public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @RequestParam("mobile-number")
         @Pattern(regexp="(^$|[0-9]{11})",message = "Mobile Number must be 11 digits")
         String mobileNumber
     ) {
-        CustomerDetailsDto customerDetailsDto = iCustomerService.fetchCustomerDetails(mobileNumber);
+        log.debug("Found requestId: {}", requestId);
+        CustomerDetailsDto customerDetailsDto = iCustomerService.fetchCustomerDetails(requestId, mobileNumber);
         return ResponseEntity.ok(customerDetailsDto);
     }
 

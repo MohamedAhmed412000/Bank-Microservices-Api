@@ -13,7 +13,13 @@
 					"name": "create account",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
@@ -149,7 +155,13 @@
 					"name": "fetch accounts details",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{accounts-url}}/api/v1/accounts/fetch-accounts?mobile-number=01234567890",
 							"host": [
@@ -276,7 +288,13 @@
 					"name": "fetch customer details",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{accounts-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
 							"host": [
@@ -403,7 +421,13 @@
 					"name": "update customer info",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Johnie Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"accounts\": [\r\n        {\r\n            \"accountNumber\": 1132148201,\r\n            \"accountType\": \"SAVING\",\r\n            \"branchAddress\": \"291 Main Street, Ain Shams\"\r\n        }\r\n    ]\r\n}",
@@ -590,7 +614,13 @@
 					"name": "delete customer info",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{accounts-url}}/api/v1/accounts/delete-customer-info?mobile-number=01234567890",
 							"host": [
@@ -1155,7 +1185,13 @@
 					"name": "issue new card",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
@@ -1291,7 +1327,13 @@
 					"name": "fetch cards details",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{cards-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
 							"host": [
@@ -1483,7 +1525,13 @@
 					"name": "update card info",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardNumber\": \"4973250409577125\",\r\n    \"cardType\": \"DEBIT\",\r\n    \"totalLimit\": 1000000,\r\n    \"availableBalance\": 5000,\r\n    \"usedBalance\": 10000\r\n}",
@@ -1623,7 +1671,13 @@
 					"name": "delete cards info",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{cards-url}}/api/v1/cards/delete-card-info?mobileNumber=01234567890",
 							"host": [
@@ -2252,7 +2306,13 @@
 					"name": "create Loan",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{loans-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
 							"host": [
@@ -2379,7 +2439,13 @@
 					"name": "fetch loan details",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{loans-url}}/api/v1/loans/fetch-loan-details?mobile-number=01234567890",
 							"host": [
@@ -2510,7 +2576,13 @@
 					"name": "update loan info",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"loanNumber\": \"1028988225\",\r\n    \"loanType\": \"HOME_LOAN\",\r\n    \"loanAmount\": 100000,\r\n    \"amountPaid\": 0,\r\n    \"outstandingAmount\": 100000\r\n}",
@@ -2650,7 +2722,13 @@
 					"name": "delete loan info",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "X-REQUEST-ID",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{loans-url}}/api/v1/loans/delete-loan-info?mobile-number=01234567890",
 							"host": [
@@ -3995,6 +4073,575 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "API Gateway",
+			"item": [
+				{
+					"name": "Routed examples",
+					"item": [
+						{
+							"name": "create account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts",
+										"create-account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:54:23 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:15 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "issue new card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"issue-card"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:55:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "create Loan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"loans",
+										"create-loan"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:56:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:29 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "fetch customer details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"fetch-customer-details"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:57:07 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1295028988,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250872433706\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1056498410\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:41 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1690104782,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250132112690\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1830055548\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "fetch gateway routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-url}}/actuator/gateway/routes",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"actuator",
+								"gateway",
+								"routes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/actuator/gateway/routes",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"actuator",
+										"gateway",
+										"routes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"predicate\": \"Paths: [/loans/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8092\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_LOANS\",\n        \"filters\": [\n            \"[[RewritePath /loans/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://LOANS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/accounts/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8091\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_ACCOUNTS\",\n        \"filters\": [\n            \"[[RewritePath /accounts/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://ACCOUNTS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/cards/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8093\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_CARDS\",\n        \"filters\": [\n            \"[[RewritePath /cards/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://CARDS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/apigateway/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8080\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_APIGATEWAY\",\n        \"filters\": [\n            \"[[RewritePath /apigateway/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://APIGATEWAY\",\n        \"order\": 0\n    }\n]"
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -4043,6 +4690,11 @@
 		{
 			"key": "discovery-url",
 			"value": "http://localhost:8070",
+			"type": "default"
+		},
+		{
+			"key": "gateway-url",
+			"value": "http://localhost:8080",
 			"type": "default"
 		}
 	]

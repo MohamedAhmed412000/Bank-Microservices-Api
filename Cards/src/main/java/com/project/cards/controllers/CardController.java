@@ -1,5 +1,6 @@
 package com.project.cards.controllers;
 
+import com.project.cards.constants.ApplicationConstants;
 import com.project.cards.dto.CardDto;
 import com.project.cards.dto.CardsFilterDto;
 import com.project.cards.dto.ErrorResponseDto;
@@ -15,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Tag(
     name = "CRUD Rest APIs for Cards Microservice",
     description = "Provides RESTFUL APIs for managing cards."
@@ -53,6 +56,7 @@ public class CardController {
     )
     @PostMapping(value = "/issue-card", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseDto> createAccount(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @RequestBody CardDto cardDto
     ) {
         iCardService.issueCard(cardDto);
@@ -80,9 +84,10 @@ public class CardController {
     )
     @GetMapping(value = "/fetch-cards")
     public ResponseEntity<List<CardDto>> fetchCards(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @ModelAttribute CardsFilterDto cardsFilterDto
     ) {
-        System.out.println(cardsFilterDto);
+        log.debug("Found requestId: {}", requestId);
         List<CardDto> cardsDto = iCardService.fetchCards(cardsFilterDto);
         if (cardsDto.isEmpty()) {
             throw new ResourceNotFoundException("Card", "filters", cardsFilterDto.toString());
@@ -108,6 +113,7 @@ public class CardController {
     )
     @PutMapping(value = "/update-card-info", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseDto> updateCardDetails(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @RequestBody CardDto cardDto
     ) {
         boolean isUpdated = iCardService.updateCard(cardDto);
@@ -142,6 +148,7 @@ public class CardController {
     )
     @DeleteMapping(value = "/delete-card-info")
     public ResponseEntity<ResponseDto> deleteCardInfo(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @ModelAttribute CardsFilterDto cardsFilterDto
     ) {
         boolean isDeleted = iCardService.deleteCard(cardsFilterDto);

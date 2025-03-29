@@ -1,5 +1,6 @@
 package com.project.loans.controllers;
 
+import com.project.loans.constants.ApplicationConstants;
 import com.project.loans.dto.ErrorResponseDto;
 import com.project.loans.dto.LoanDto;
 import com.project.loans.dto.ResponseDto;
@@ -13,12 +14,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Tag(
     name = "CRUD Rest APIs for Loans Microservice",
     description = "Provides RESTFUL APIs for managing loans."
@@ -49,6 +52,7 @@ public class LoansController {
     )
     @PostMapping(value = "/create-loan")
     public ResponseEntity<ResponseDto> createLoan(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @RequestParam("mobile-number")
         @Pattern(regexp="(^$|[0-9]{11})",message = "Mobile Number must be 11 digits")
         String mobileNumber
@@ -78,10 +82,12 @@ public class LoansController {
     )
     @GetMapping(value = "/fetch-loan-details")
     public ResponseEntity<LoanDto> fetchLoanDetails(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @RequestParam("mobile-number")
         @Pattern(regexp="(^$|[0-9]{11})",message = "Mobile Number must be 11 digits")
         String mobileNumber
     ) {
+        log.debug("Found requestId: {}", requestId);
         LoanDto loanDto = iLoanService.fetchLoanDetails(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(loanDto);
     }
@@ -103,7 +109,9 @@ public class LoansController {
         }
     )
     @PutMapping(value = "/update-loan-info", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseDto> updateLoanInfo(@Valid @RequestBody LoanDto loanDto) {
+    public ResponseEntity<ResponseDto> updateLoanInfo(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
+        @Valid @RequestBody LoanDto loanDto) {
         boolean isUpdate = iLoanService.updateLoan(loanDto);
         if (isUpdate) {
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(
@@ -136,6 +144,7 @@ public class LoansController {
     )
     @DeleteMapping(value = "/delete-loan-info")
     public ResponseEntity<ResponseDto> deleteLoanInfo(
+        @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @RequestParam(name = "mobile-number")
         @Pattern(regexp = "(^$|[0-9]{11})", message = "Mobile number must be 11 digits")
         String mobileNumber

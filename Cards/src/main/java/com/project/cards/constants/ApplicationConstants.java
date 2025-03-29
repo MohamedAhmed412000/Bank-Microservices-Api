@@ -8,5 +8,6 @@ public class ApplicationConstants {
 
     public static final int MAX_AVAILABLE_ISSUED_CARDS = 3;
     public static final long TOTAL_CARD_LIMIT = 1000_000L;
+    public static final String REQUEST_HEADER_NAME = "X-REQUEST-ID";
 
 }

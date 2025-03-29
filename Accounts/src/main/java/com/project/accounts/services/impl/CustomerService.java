@@ -37,7 +37,7 @@ public class CustomerService implements ICustomerService {
      * @return the customer details with his accounts list, cards list, and loan
      */
     @Override
-    public CustomerDetailsDto fetchCustomerDetails(String mobileNumber) {
+    public CustomerDetailsDto fetchCustomerDetails(String requestId, String mobileNumber) {
         // Fetch the customer details
         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
             () -> new ResourceNotFoundException("Customer", "Mobile number", mobileNumber)
@@ -54,18 +54,17 @@ public class CustomerService implements ICustomerService {
         );
 
         // Fetch the customer loan details
-        ResponseEntity<LoanDto> loanDtoResponseEntity = loansFeignClient.fetchLoanDetails(mobileNumber);
+        ResponseEntity<LoanDto> loanDtoResponseEntity = loansFeignClient.fetchLoanDetails(requestId,
+            mobileNumber);
         if (loanDtoResponseEntity.getStatusCode().is2xxSuccessful()) {
             LoanDto loanDto = loanDtoResponseEntity.getBody();
             customerDetailsDto.setLoan(loanDto);
         }
 
         // Fetch the customer cards details
-        ResponseEntity<Object> cardsResponseEntity = cardsFeignClient.fetchCardsDetails(
+        ResponseEntity<Object> cardsResponseEntity = cardsFeignClient.fetchCardsDetails(requestId,
             mobileNumber, null);
         if (cardsResponseEntity.getStatusCode().is2xxSuccessful()) {
-            String body = Objects.requireNonNull(cardsResponseEntity.getBody()).toString();
-            System.out.println(body);
             List<CardDto> cards = objectMapper.convertValue(cardsResponseEntity.getBody(),
                 new TypeReference<>() {});
             customerDetailsDto.setCards(cards);
