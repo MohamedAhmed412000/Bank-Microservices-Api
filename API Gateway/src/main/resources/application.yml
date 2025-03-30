@@ -33,3 +33,16 @@ logging:
     com:
       project:
         gateway: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        # Must take 10 requests to move from close state to open state
+        sliding-window-size: 10
+        # Will take 2 requests only to decide to move from half-open to open/close state
+        permitted-number-of-calls-in-half-open-state: 2
+        # If 50% of requests failed will move from close state to open state
+        failure-rate-threshold: 50
+        # Circuit breaker will try to move from open state to half-open state after 10 seconds
+        wait-duration-in-open-state: 10000

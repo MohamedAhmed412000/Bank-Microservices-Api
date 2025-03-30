@@ -15,8 +15,22 @@ public class RoutingConfig {
         return routeLocatorBuilder.routes()
             .route(p -> p
                 .path("/api/v1/accounts/**", "/api/v1/customer/**")
-                .filters(f -> f.rewritePath("/(?<api>.*)", "/${api}")
+                .filters(f -> f
+                    .rewritePath("/(?<api>.*)", "/${api}")
                     .addResponseHeader("X-RESPONSE-TIME", LocalDateTime.now().toString())
+                    .circuitBreaker(config -> config
+                        .setName("accountsCircuitBreaker").setFallbackUri("forward:/contact-support")
+                    )
+                )
+                .uri("lb://ACCOUNTS")
+            )
+            .route(p -> p
+                .path("/accounts/**")
+                .filters(f -> f
+                    .rewritePath("/accounts/(?<api>.*)", "/${api}")
+                    .circuitBreaker(config -> config
+                        .setName("accountsCircuitBreaker").setFallbackUri("forward:/contact-support")
+                    )
                 )
                 .uri("lb://ACCOUNTS")
             )

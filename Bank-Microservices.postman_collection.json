@@ -4585,6 +4585,129 @@
 									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1690104782,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250132112690\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1830055548\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "customer support info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/accounts/api/support-info",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"accounts",
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 07:31:19 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"This is the customer support info for Production environment\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Product Owner\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+								},
+								{
+									"name": "simulating open-state",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "677"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:40:50.900+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 503,\n    \"error\": \"Service Unavailable\",\n    \"requestId\": \"5a7b6b5e-23\",\n    \"message\": \"Upstream service is temporarily unavailable\",\n    \"trace\": \"org.springframework.cloud.gateway.support.ServiceUnavailableException\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\r\\nError has been observed at the following site(s):\\r\\n\\t*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]\\r\\n\\t*__checkpoint ⇢ HTTP GET \\\"/accounts/api/support-info\\\" [ExceptionHandlingWebHandler]\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								},
+								{
+									"name": "simulating network issue using debugging",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1619"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:41:25.607+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"5a7b6b5e-24\",\n    \"message\": \"Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n    \"trace\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:296)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:281)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:420)\\r\\n\\tat reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:270)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:285)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)\\r\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\\r\\n\\tat java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\\r\\n\\tat java.base/java.lang.Thread.run(Thread.java:1583)\\r\\n\"\n}"
+								}
+							]
 						}
 					]
 				},
@@ -4638,6 +4761,158 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"predicate\": \"Paths: [/loans/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8092\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_LOANS\",\n        \"filters\": [\n            \"[[RewritePath /loans/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://LOANS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/accounts/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8091\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_ACCOUNTS\",\n        \"filters\": [\n            \"[[RewritePath /accounts/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://ACCOUNTS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/cards/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8093\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_CARDS\",\n        \"filters\": [\n            \"[[RewritePath /cards/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://CARDS\",\n        \"order\": 0\n    },\n    {\n        \"predicate\": \"Paths: [/apigateway/**], match trailing slash: true\",\n        \"metadata\": {\n            \"management.port\": \"8080\"\n        },\n        \"route_id\": \"ReactiveCompositeDiscoveryClient_APIGATEWAY\",\n        \"filters\": [\n            \"[[RewritePath /apigateway/?(?<remaining>.*) = '/${remaining}'], order = 1]\"\n        ],\n        \"uri\": \"lb://APIGATEWAY\",\n        \"order\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "fetch circuit-breakers configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-url}}/actuator/circuitbreakers",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/actuator/circuitbreakers",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakers\": {\n        \"accountsCircuitBreaker\": {\n            \"failureRate\": \"-1.0%\",\n            \"slowCallRate\": \"-1.0%\",\n            \"failureRateThreshold\": \"50.0%\",\n            \"slowCallRateThreshold\": \"100.0%\",\n            \"bufferedCalls\": 1,\n            \"failedCalls\": 0,\n            \"slowCalls\": 0,\n            \"slowFailedCalls\": 0,\n            \"notPermittedCalls\": 0,\n            \"state\": \"CLOSED\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch circuit-breaker events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-url}}/actuator/circuitbreakerevents?name=accountsCircuitBreaker",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakerevents"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "accountsCircuitBreaker"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/actuator/circuitbreakerevents?name=accountsCircuitBreaker",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakerevents"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "accountsCircuitBreaker"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakerEvents\": [\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T09:31:19.064780600+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 149,\n            \"stateTransition\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/actuator/circuitbreakerevents?name=accountsCircuitBreaker",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakerevents"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "accountsCircuitBreaker"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5779"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakerEvents\": [\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T09:31:19.064780600+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 149,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T09:35:26.799362200+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 14,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T09:35:27.574108900+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 4,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:37:30.466606100+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:39:32.659673600+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:39:52.282461800+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:39:59.236159700+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:40:06.516235800+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:40:47.901456900+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:40:49.987212900+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"FAILURE_RATE_EXCEEDED\",\n            \"creationTime\": \"2025-03-30T09:40:49.987212900+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"STATE_TRANSITION\",\n            \"creationTime\": \"2025-03-30T09:40:49.988202400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": \"CLOSED_TO_OPEN\"\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:40:50.900811400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"STATE_TRANSITION\",\n            \"creationTime\": \"2025-03-30T09:41:24.604385600+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": \"OPEN_TO_HALF_OPEN\"\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:41:25.607203300+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"ERROR\",\n            \"creationTime\": \"2025-03-30T09:42:24.661165400+02:00[Africa/Cairo]\",\n            \"errorMessage\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n            \"durationInMs\": 1000,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"STATE_TRANSITION\",\n            \"creationTime\": \"2025-03-30T09:42:24.661165400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": \"HALF_OPEN_TO_OPEN\"\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:42:27.301941400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:42:30.364935300+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:42:31.772095600+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:42:33.098524400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        },\n        {\n            \"circuitBreakerName\": \"accountsCircuitBreaker\",\n            \"type\": \"NOT_PERMITTED\",\n            \"creationTime\": \"2025-03-30T09:42:34.153359700+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": null,\n            \"stateTransition\": null\n        }\n    ]\n}"
 						}
 					]
 				}
