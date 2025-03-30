@@ -62,3 +62,17 @@ logging:
     com:
       project:
         loans: DEBUG
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 500
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        ignore-exceptions:
+          - java.lang.NullPointerException
+        retry-exceptions: # when defining this ensures retry will occur with the exceptions listed only
+          # and all other exceptions will be ignored so no need to define ignored exceptions
+          - java.util.concurrent.TimeoutException

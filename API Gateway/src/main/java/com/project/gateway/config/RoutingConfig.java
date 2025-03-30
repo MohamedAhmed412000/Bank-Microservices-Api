@@ -1,5 +1,11 @@
 package com.project.gateway.config;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.timelimiter.TimeLimiterConfig;
+import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JCircuitBreakerFactory;
+import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
+import org.springframework.cloud.client.circuitbreaker.Customizer;
+import org.springframework.cloud.client.loadbalancer.reactive.ReactiveLoadBalancer;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -67,7 +73,28 @@ public class RoutingConfig {
                 .metadata(RESPONSE_TIMEOUT_ATTR, 5000)
                 .uri("lb://LOANS")
             )
+            .route(p -> p
+                .path("/loans/**")
+                .filters(f -> f
+                    .rewritePath("/loans/(?<api>.*)", "/${api}")
+                    .circuitBreaker(config -> config
+                        .setName("loansCircuitBreaker").setFallbackUri("forward:/contact-support")
+                    )
+                )
+                .uri("lb://LOANS")
+            )
             .build();
+    }
+
+    // Configure circuit breaker default timeout duration to be 5s instead of 1s
+    @Bean
+    public Customizer<ReactiveResilience4JCircuitBreakerFactory> defaultCustomizer() {
+        return factory -> factory
+            .configureDefault(id -> new Resilience4JConfigBuilder(id)
+                .circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
+                .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(5)).build())
+                .build()
+            );
     }
 
 }

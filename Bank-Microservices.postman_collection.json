@@ -4870,7 +4870,14 @@
 							"name": "accounts support info",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{gateway-url}}/accounts/api/support-info",
 									"host": [
@@ -4990,10 +4997,81 @@
 							]
 						},
 						{
+							"name": "loans build version",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/build-version",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response from the fallback method after retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/build-version",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"build-version"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "5"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 12:47:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "1.1.0"
+								}
+							]
+						},
+						{
 							"name": "cards support info",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{gateway-url}}/cards/api/support-info",
 									"host": [
