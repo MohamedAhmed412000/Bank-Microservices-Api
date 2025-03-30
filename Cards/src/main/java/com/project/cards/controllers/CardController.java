@@ -87,7 +87,7 @@ public class CardController {
         @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @ModelAttribute CardsFilterDto cardsFilterDto
     ) {
-        log.debug("Found requestId: {}", requestId);
+        log.debug("Invoked API & Found requestId: {}", requestId);
         List<CardDto> cardsDto = iCardService.fetchCards(cardsFilterDto);
         if (cardsDto.isEmpty()) {
             throw new ResourceNotFoundException("Card", "filters", cardsFilterDto.toString());

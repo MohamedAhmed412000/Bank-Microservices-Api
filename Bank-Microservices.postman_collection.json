@@ -4534,6 +4534,95 @@
 							]
 						},
 						{
+							"name": "fetch cards details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"fetch-cards"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "01234567890"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4973250409577126",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response with 3 retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-REQUEST-ID",
+												"value": "{{$guid}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"fetch-cards"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "01234567890"
+												},
+												{
+													"key": "cardNumber",
+													"value": "4973250409577126",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1098"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T11:57:28.383+00:00\",\n    \"path\": \"/api/v1/cards/fetch-cards\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"ddb02785-6\",\n    \"message\": \"Response took longer than timeout: PT3S\",\n    \"trace\": \"org.springframework.cloud.gateway.support.TimeoutException: Response took longer than timeout: PT3S\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\nAssembly trace from producer [reactor.core.publisher.MonoError] :\\n\\treactor.core.publisher.Mono.error(Mono.java:299)\\n\\torg.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\nError has been observed at the following site(s):\\r\\n\\t*____Mono.error ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\n\\t*____Mono.defer ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:194)\\r\\n\\t*__Flux.timeout ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:193)\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								}
+							]
+						},
+						{
 							"name": "create Loan",
 							"request": {
 								"method": "POST",

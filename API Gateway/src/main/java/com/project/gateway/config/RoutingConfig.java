@@ -4,7 +4,9 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.springframework.cloud.gateway.support.RouteMetadataUtils.CONNECT_TIMEOUT_ATTR;
@@ -36,8 +38,14 @@ public class RoutingConfig {
             )
             .route(p -> p
                 .path("/api/v1/cards/**")
-                .filters(f -> f.rewritePath("/(?<api>.*)", "/${api}")
+                .filters(f -> f
+                    .rewritePath("/(?<api>.*)", "/${api}")
                     .addResponseHeader("X-RESPONSE-TIME", LocalDateTime.now().toString())
+                    .retry(retryConfig -> retryConfig
+                        .setRetries(3)
+                        .setMethods(HttpMethod.GET)
+                        .setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true)
+                    )
                 )
                 .uri("lb://CARDS")
             )
