@@ -2,15 +2,21 @@ package com.project.gateway.config;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.timelimiter.TimeLimiterConfig;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JCircuitBreakerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
 import org.springframework.cloud.client.circuitbreaker.Customizer;
 import org.springframework.cloud.client.loadbalancer.reactive.ReactiveLoadBalancer;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
+import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.HttpMethod;
+import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -19,8 +25,14 @@ import static org.springframework.cloud.gateway.support.RouteMetadataUtils.CONNE
 import static org.springframework.cloud.gateway.support.RouteMetadataUtils.RESPONSE_TIMEOUT_ATTR;
 
 @Configuration
+@DependsOn("rateLimitingConfig")
+@RequiredArgsConstructor
 public class RoutingConfig {
 
+    @Qualifier("userKeyResolver")
+    private final KeyResolver keyResolver;
+    private final RedisRateLimiter redisRateLimiter;
+    
     @Bean
     RouteLocator generateRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
@@ -59,6 +71,10 @@ public class RoutingConfig {
                 .path("/cards/**")
                 .filters(f -> f
                     .rewritePath("/cards/(?<api>.*)", "/${api}")
+                    .requestRateLimiter(config -> config
+                        .setRateLimiter(redisRateLimiter)
+                        .setKeyResolver(keyResolver)
+                    )
                 )
                 .uri("lb://CARDS")
             )
