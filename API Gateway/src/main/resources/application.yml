@@ -9,6 +9,9 @@ spring:
         locator:
           enabled: false # disable the default discovery routing
           lower-case-service-id: true
+      httpclient: # configuring timeout for http clients
+        connect-timeout: 1000
+        response-timeout: 3s
 
 management:
   endpoints:
