@@ -18,9 +18,9 @@ public class RoutingConfig {
                 .filters(f -> f
                     .rewritePath("/(?<api>.*)", "/${api}")
                     .addResponseHeader("X-RESPONSE-TIME", LocalDateTime.now().toString())
-                    .circuitBreaker(config -> config
-                        .setName("accountsCircuitBreaker").setFallbackUri("forward:/contact-support")
-                    )
+//                    .circuitBreaker(config -> config
+//                        .setName("accountsCircuitBreaker").setFallbackUri("forward:/contact-support")
+//                    )
                 )
                 .uri("lb://ACCOUNTS")
             )

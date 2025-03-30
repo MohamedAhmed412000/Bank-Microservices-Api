@@ -1175,6 +1175,197 @@
 							"body": "{\n    \"message\": \"Shutting down, bye...\"\n}"
 						}
 					]
+				},
+				{
+					"name": "fetch circuit-breakers configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/actuator/circuitbreakers",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/circuitbreakers",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Mar 2025 09:05:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakers\": {\n        \"CardsFeignClientfetchCardsDetailsStringStringString\": {\n            \"failureRate\": \"-1.0%\",\n            \"slowCallRate\": \"-1.0%\",\n            \"failureRateThreshold\": \"50.0%\",\n            \"slowCallRateThreshold\": \"100.0%\",\n            \"bufferedCalls\": 1,\n            \"failedCalls\": 0,\n            \"slowCalls\": 0,\n            \"slowFailedCalls\": 0,\n            \"notPermittedCalls\": 0,\n            \"state\": \"CLOSED\"\n        },\n        \"LoansFeignClientfetchLoanDetailsStringString\": {\n            \"failureRate\": \"-1.0%\",\n            \"slowCallRate\": \"-1.0%\",\n            \"failureRateThreshold\": \"50.0%\",\n            \"slowCallRateThreshold\": \"100.0%\",\n            \"bufferedCalls\": 1,\n            \"failedCalls\": 0,\n            \"slowCalls\": 0,\n            \"slowFailedCalls\": 0,\n            \"notPermittedCalls\": 0,\n            \"state\": \"CLOSED\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "fetch circuit-breaker events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts-url}}/actuator/circuitbreakerevents/:circuit-breaker-config-name",
+							"host": [
+								"{{accounts-url}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakerevents",
+								":circuit-breaker-config-name"
+							],
+							"variable": [
+								{
+									"key": "circuit-breaker-config-name",
+									"value": "CardsFeignClientfetchCardsDetailsStringStringString"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "loans circuit-breaker events",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/circuitbreakerevents/:circuit-breaker-config-name",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakerevents",
+										":circuit-breaker-config-name"
+									],
+									"variable": [
+										{
+											"key": "circuit-breaker-config-name",
+											"value": "LoansFeignClientfetchLoanDetailsStringString"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Mar 2025 09:03:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakerEvents\": [\n        {\n            \"circuitBreakerName\": \"LoansFeignClientfetchLoanDetailsStringString\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T11:01:26.908758400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 188,\n            \"stateTransition\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "cards circuit-breaker events",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{accounts-url}}/actuator/circuitbreakerevents/:circuit-breaker-config-name",
+									"host": [
+										"{{accounts-url}}"
+									],
+									"path": [
+										"actuator",
+										"circuitbreakerevents",
+										":circuit-breaker-config-name"
+									],
+									"variable": [
+										{
+											"key": "circuit-breaker-config-name",
+											"value": "CardsFeignClientfetchCardsDetailsStringStringString"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Mar 2025 09:04:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"circuitBreakerEvents\": [\n        {\n            \"circuitBreakerName\": \"CardsFeignClientfetchCardsDetailsStringStringString\",\n            \"type\": \"SUCCESS\",\n            \"creationTime\": \"2025-03-30T11:01:26.992516400+02:00[Africa/Cairo]\",\n            \"errorMessage\": null,\n            \"durationInMs\": 76,\n            \"stateTransition\": null\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		},

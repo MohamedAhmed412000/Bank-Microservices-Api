@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "cards", dismiss404 = true)
+@FeignClient(value = "cards", dismiss404 = true, fallback = CardsFallback.class)
 public interface CardsFeignClient {
 
     @GetMapping(value = "/api/v1/cards/fetch-cards", produces = MediaType.APPLICATION_JSON_VALUE)
