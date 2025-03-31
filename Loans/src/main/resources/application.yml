@@ -76,3 +76,9 @@ resilience4j:
         retry-exceptions: # when defining this ensures retry will occur with the exceptions listed only
           # and all other exceptions will be ignored so no need to define ignored exceptions
           - java.util.concurrent.TimeoutException
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 1 # the maximum number of requests allowed in the refresh interval
+        limit-refresh-period: 5000 # the amount of time to refresh the tokens
+        timeout-duration: 1000 # the amount of time that the thread will wait before returning error

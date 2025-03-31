@@ -1,12 +1,14 @@
 package com.project.loans.controllers;
 
 import com.project.loans.dto.CustomerSupportInfoDto;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +44,7 @@ public class DocsController {
         return ResponseEntity.ok("1.1.0");
     }
 
+    @RateLimiter(name = "getJavaConfig", fallbackMethod = "getJavaConfigFallback")
     @GetMapping(value = "/api/java-config", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> getJavaConfig() {
         Map<String, String> javaConf = new HashMap<>();
@@ -49,6 +52,10 @@ public class DocsController {
         javaConf.put("java.version", environment.getProperty("JAVA_VERSION"));
         javaConf.put("java.home", environment.getProperty("JAVA_HOME"));
         return ResponseEntity.ok(javaConf);
+    }
+
+    public ResponseEntity<String> getJavaConfigFallback(Throwable throwable) {
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS.value()).body("Not Accepted Request");
     }
 
     @GetMapping(value = "/api/support-info", produces = MediaType.APPLICATION_JSON_VALUE)

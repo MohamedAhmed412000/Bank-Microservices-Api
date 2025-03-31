@@ -5061,6 +5061,149 @@
 							]
 						},
 						{
+							"name": "loans java configurations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/java-config",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"java-config"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:15:03 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "e598968e-7899-453b-952c-ced311310dbb"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"maven.home\": null,\n    \"java.version\": null,\n    \"java.home\": \"C:\\\\Program Files\\\\graalvm-jdk-21.0.6+8.1\"\n}"
+								},
+								{
+									"name": "rate limiter error response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:18:26 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "88e44f70-93cd-4e5b-8245-ff94bf4f7391"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiPath\": \"uri=/api/java-config\",\n    \"errorCode\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"RateLimiter 'getJavaConfig' does not permit further calls\",\n    \"errorTime\": \"2025-03-31T13:18:26.7068219\"\n}"
+								},
+								{
+									"name": "response with fallback method",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:23:54 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "aa2fc7cc-88f9-4c98-bbca-fd33c0332caa"
+										}
+									],
+									"cookie": [],
+									"body": "Not Accepted Request"
+								}
+							]
+						},
+						{
 							"name": "cards support info",
 							"request": {
 								"method": "GET",
