@@ -49,6 +49,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -74,7 +79,7 @@
                 <version>3.3.2</version>
                 <configuration>
                     <to>
-                        <image>mohamedahmed412000/eureka-server:v1.0</image>
+                        <image>mohamedahmed412000/eureka-server:v2.0</image>
                     </to>
                 </configuration>
             </plugin>
