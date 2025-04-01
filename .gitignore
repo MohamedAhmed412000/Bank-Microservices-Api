@@ -1,4 +1,5 @@
 ﻿/.idea/*
+/**/.data/*
 .mtj.tmp/
 /**/target/**
 *.class

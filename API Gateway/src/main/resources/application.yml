@@ -11,7 +11,7 @@ spring:
           lower-case-service-id: true
       httpclient: # configuring timeout for http clients
         connect-timeout: 1000
-        response-timeout: 3s
+        response-timeout: 10s
   data:
     redis:
       host: localhost
