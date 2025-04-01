@@ -5,6 +5,7 @@ import com.project.cards.dto.CardDto;
 import com.project.cards.dto.CardsFilterDto;
 import com.project.cards.enums.CardTypeEnum;
 import com.project.cards.exceptions.MaxCustomerCardsReachedException;
+import com.project.cards.exceptions.ResourceNotFoundException;
 import com.project.cards.mappers.CardMapper;
 import com.project.cards.models.Card;
 import com.project.cards.repositories.CardRepository;
@@ -43,7 +44,12 @@ public class CardServiceImpl implements ICardService {
     public List<CardDto> fetchCards(CardsFilterDto cardsFilterDto) {
         List<Card> cards = cardRepository.findByMobileNumberAndCardNumber(cardsFilterDto.getMobileNumber(),
             cardsFilterDto.getCardNumber());
-        return cards.stream().map(card -> CardMapper.mapToCardDto(card, new CardDto())).toList();
+        List<CardDto> cardsDto = cards.stream().map(card -> CardMapper.mapToCardDto(card,
+            new CardDto())).toList();
+        if (cardsDto.isEmpty()) {
+            throw new ResourceNotFoundException("Card", "filters", cardsFilterDto.toString());
+        }
+        return cardsDto;
     }
 
     /**

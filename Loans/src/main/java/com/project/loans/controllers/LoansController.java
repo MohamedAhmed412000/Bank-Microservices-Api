@@ -87,8 +87,9 @@ public class LoansController {
         @Pattern(regexp="(^$|[0-9]{11})",message = "Mobile Number must be 11 digits")
         String mobileNumber
     ) {
-        log.debug("Found requestId: {}", requestId);
+        log.debug("Getting loan details started");
         LoanDto loanDto = iLoanService.fetchLoanDetails(mobileNumber);
+        log.debug("Getting loan details ended");
         return ResponseEntity.status(HttpStatus.OK).body(loanDto);
     }
 

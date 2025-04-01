@@ -6,7 +6,6 @@ import com.project.cards.dto.CardsFilterDto;
 import com.project.cards.dto.ErrorResponseDto;
 import com.project.cards.dto.ResponseDto;
 import com.project.cards.enums.ResponsesEnum;
-import com.project.cards.exceptions.ResourceNotFoundException;
 import com.project.cards.services.ICardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -87,11 +86,9 @@ public class CardController {
         @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
         @Valid @ModelAttribute CardsFilterDto cardsFilterDto
     ) {
-        log.debug("Invoked API & Found requestId: {}", requestId);
+        log.debug("Getting cards details started");
         List<CardDto> cardsDto = iCardService.fetchCards(cardsFilterDto);
-        if (cardsDto.isEmpty()) {
-            throw new ResourceNotFoundException("Card", "filters", cardsFilterDto.toString());
-        }
+        log.debug("Getting cards details ended");
         return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
     }
 

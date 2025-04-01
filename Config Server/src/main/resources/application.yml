@@ -1,6 +1,6 @@
 spring:
   application:
-    name: "Config Server"
+    name: "config-server"
   profiles:
     active: git
   #    active: native
@@ -41,3 +41,7 @@ server:
 
 encrypt:
   key: "16ff33913e7911a3cb71f628cbcc612c086a8ceb94ce10020f1c6394884884a5"
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name}, %X{trace_id}, %X{span_id}]"

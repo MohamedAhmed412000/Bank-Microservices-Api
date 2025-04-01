@@ -54,8 +54,9 @@ public class CustomerController {
         @Pattern(regexp="(^$|[0-9]{11})",message = "Mobile Number must be 11 digits")
         String mobileNumber
     ) {
-        log.debug("Found requestId: {}", requestId);
+        log.debug("Getting customer details started");
         CustomerDetailsDto customerDetailsDto = iCustomerService.fetchCustomerDetails(requestId, mobileNumber);
+        log.debug("Getting customer details ended");
         return ResponseEntity.ok(customerDetailsDto);
     }
 
