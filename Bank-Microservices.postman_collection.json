@@ -5303,6 +5303,2377 @@
 					]
 				},
 				{
+					"name": "Routed security (client-credentials) examples",
+					"item": [
+						{
+							"name": "create account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts",
+										"create-account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:54:23 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:15 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "not authenticated",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-REQUEST-ID",
+												"value": "{{$guid}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "WWW-Authenticate",
+											"value": "Bearer"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "issue new card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"issue-card"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:55:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "fetch cards details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"fetch-cards"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "01234567890"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4973250409577126",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response with 3 retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-REQUEST-ID",
+												"value": "{{$guid}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"fetch-cards"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "01234567890"
+												},
+												{
+													"key": "cardNumber",
+													"value": "4973250409577126",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1098"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T11:57:28.383+00:00\",\n    \"path\": \"/api/v1/cards/fetch-cards\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"ddb02785-6\",\n    \"message\": \"Response took longer than timeout: PT3S\",\n    \"trace\": \"org.springframework.cloud.gateway.support.TimeoutException: Response took longer than timeout: PT3S\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\nAssembly trace from producer [reactor.core.publisher.MonoError] :\\n\\treactor.core.publisher.Mono.error(Mono.java:299)\\n\\torg.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\nError has been observed at the following site(s):\\r\\n\\t*____Mono.error ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\n\\t*____Mono.defer ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:194)\\r\\n\\t*__Flux.timeout ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:193)\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								}
+							]
+						},
+						{
+							"name": "create Loan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"loans",
+										"create-loan"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:56:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:29 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "fetch customer details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"fetch-customer-details"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:57:07 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1295028988,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250872433706\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1056498410\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:41 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1690104782,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250132112690\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1830055548\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "accounts support info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/accounts/api/support-info",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"accounts",
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 07:31:19 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"This is the customer support info for Production environment\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Product Owner\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+								},
+								{
+									"name": "simulating open-state",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "677"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:40:50.900+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 503,\n    \"error\": \"Service Unavailable\",\n    \"requestId\": \"5a7b6b5e-23\",\n    \"message\": \"Upstream service is temporarily unavailable\",\n    \"trace\": \"org.springframework.cloud.gateway.support.ServiceUnavailableException\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\r\\nError has been observed at the following site(s):\\r\\n\\t*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]\\r\\n\\t*__checkpoint ⇢ HTTP GET \\\"/accounts/api/support-info\\\" [ExceptionHandlingWebHandler]\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								},
+								{
+									"name": "simulating network issue using debugging",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1619"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:41:25.607+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"5a7b6b5e-24\",\n    \"message\": \"Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n    \"trace\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:296)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:281)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:420)\\r\\n\\tat reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:270)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:285)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)\\r\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\\r\\n\\tat java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\\r\\n\\tat java.base/java.lang.Thread.run(Thread.java:1583)\\r\\n\"\n}"
+								}
+							]
+						},
+						{
+							"name": "loans build version",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/build-version",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response from the fallback method after retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/build-version",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"build-version"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "5"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 12:47:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "1.1.0"
+								}
+							]
+						},
+						{
+							"name": "loans java configurations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/java-config",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"java-config"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:15:03 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "e598968e-7899-453b-952c-ced311310dbb"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"maven.home\": null,\n    \"java.version\": null,\n    \"java.home\": \"C:\\\\Program Files\\\\graalvm-jdk-21.0.6+8.1\"\n}"
+								},
+								{
+									"name": "rate limiter error response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:18:26 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "88e44f70-93cd-4e5b-8245-ff94bf4f7391"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiPath\": \"uri=/api/java-config\",\n    \"errorCode\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"RateLimiter 'getJavaConfig' does not permit further calls\",\n    \"errorTime\": \"2025-03-31T13:18:26.7068219\"\n}"
+								},
+								{
+									"name": "response with fallback method",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:23:54 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "aa2fc7cc-88f9-4c98-bbca-fd33c0332caa"
+										}
+									],
+									"cookie": [],
+									"body": "Not Accepted Request"
+								}
+							]
+						},
+						{
+							"name": "cards support info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/cards/api/support-info",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"cards",
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 10:50:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"This is the customer support info for Production environment\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Product Owner\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+								},
+								{
+									"name": "response after timeout configurations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1096"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T11:04:02.962+00:00\",\n    \"path\": \"/cards/api/support-info\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"fcf96913-1\",\n    \"message\": \"Response took longer than timeout: PT3S\",\n    \"trace\": \"org.springframework.cloud.gateway.support.TimeoutException: Response took longer than timeout: PT3S\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\nAssembly trace from producer [reactor.core.publisher.MonoError] :\\n\\treactor.core.publisher.Mono.error(Mono.java:299)\\n\\torg.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\nError has been observed at the following site(s):\\r\\n\\t*____Mono.error ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\n\\t*____Mono.defer ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:194)\\r\\n\\t*__Flux.timeout ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:193)\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "oauth2",
+						"oauth2": [
+							{
+								"key": "clientSecret",
+								"value": "{{cc-client-secret}}",
+								"type": "string"
+							},
+							{
+								"key": "clientId",
+								"value": "{{cc-client-id}}",
+								"type": "string"
+							},
+							{
+								"key": "accessTokenUrl",
+								"value": "http://localhost:8000/realms/master/protocol/openid-connect/token",
+								"type": "string"
+							},
+							{
+								"key": "client_authentication",
+								"value": "header",
+								"type": "string"
+							},
+							{
+								"key": "scope",
+								"value": "openid profile email",
+								"type": "string"
+							},
+							{
+								"key": "tokenName",
+								"value": "NextGen-Bank Access-token",
+								"type": "string"
+							},
+							{
+								"key": "grant_type",
+								"value": "client_credentials",
+								"type": "string"
+							},
+							{
+								"key": "addTokenTo",
+								"value": "header",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Routed security (authorization-code) examples",
+					"item": [
+						{
+							"name": "create account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts",
+										"create-account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:54:23 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:15 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "not authenticated",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-REQUEST-ID",
+												"value": "{{$guid}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"mobileNumber\": \"01234567890\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/accounts/create-account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"accounts",
+												"create-account"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "WWW-Authenticate",
+											"value": "Bearer"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "content-length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "issue new card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"issue-card"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:55:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobileNumber\": \"01234567890\",\r\n    \"cardType\": \"DEBIT\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/issue-card",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"issue-card"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "fetch cards details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"fetch-cards"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "01234567890"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4973250409577126",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response with 3 retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-REQUEST-ID",
+												"value": "{{$guid}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/cards/fetch-cards?mobileNumber=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cards",
+												"fetch-cards"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "01234567890"
+												},
+												{
+													"key": "cardNumber",
+													"value": "4973250409577126",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1098"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T11:57:28.383+00:00\",\n    \"path\": \"/api/v1/cards/fetch-cards\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"ddb02785-6\",\n    \"message\": \"Response took longer than timeout: PT3S\",\n    \"trace\": \"org.springframework.cloud.gateway.support.TimeoutException: Response took longer than timeout: PT3S\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\nAssembly trace from producer [reactor.core.publisher.MonoError] :\\n\\treactor.core.publisher.Mono.error(Mono.java:299)\\n\\torg.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\nError has been observed at the following site(s):\\r\\n\\t*____Mono.error ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\n\\t*____Mono.defer ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:194)\\r\\n\\t*__Flux.timeout ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:193)\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								}
+							]
+						},
+						{
+							"name": "create Loan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"loans",
+										"create-loan"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:56:22 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/loans/create-loan?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"loans",
+												"create-loan"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:29 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created\",\n    \"statusCode\": \"201 CREATED\"\n}"
+								}
+							]
+						},
+						{
+							"name": "fetch customer details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"fetch-customer-details"
+									],
+									"query": [
+										{
+											"key": "mobile-number",
+											"value": "01234567890"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 28 Mar 2025 15:57:07 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1295028988,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250872433706\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1056498410\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								},
+								{
+									"name": "success v2",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/v1/customer/fetch-customer-details?mobile-number=01234567890",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"customer",
+												"fetch-customer-details"
+											],
+											"query": [
+												{
+													"key": "mobile-number",
+													"value": "01234567890"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 29 Mar 2025 08:16:41 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"mobileNumber\": \"01234567890\",\n    \"accounts\": [\n        {\n            \"accountNumber\": 1690104782,\n            \"accountType\": \"SAVING\",\n            \"branchAddress\": \"29 Main Street, Ain Shams\"\n        }\n    ],\n    \"cards\": [\n        {\n            \"cardNumber\": \"4973250132112690\",\n            \"cardType\": \"DEBIT\",\n            \"totalLimit\": 1000000,\n            \"availableBalance\": 1000000,\n            \"usedBalance\": 0\n        }\n    ],\n    \"loan\": {\n        \"loanNumber\": \"1830055548\",\n        \"loanType\": \"GENERAL_LOAN\",\n        \"loanAmount\": 100000,\n        \"amountPaid\": 0,\n        \"outstandingAmount\": 100000\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "accounts support info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/accounts/api/support-info",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"accounts",
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 07:31:19 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"This is the customer support info for Production environment\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Product Owner\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+								},
+								{
+									"name": "simulating open-state",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "677"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:40:50.900+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 503,\n    \"error\": \"Service Unavailable\",\n    \"requestId\": \"5a7b6b5e-23\",\n    \"message\": \"Upstream service is temporarily unavailable\",\n    \"trace\": \"org.springframework.cloud.gateway.support.ServiceUnavailableException\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\r\\nError has been observed at the following site(s):\\r\\n\\t*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]\\r\\n\\t*__checkpoint ⇢ HTTP GET \\\"/accounts/api/support-info\\\" [ExceptionHandlingWebHandler]\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								},
+								{
+									"name": "simulating network issue using debugging",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/accounts/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"accounts",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1619"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T07:41:25.607+00:00\",\n    \"path\": \"/accounts/api/support-info\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"5a7b6b5e-24\",\n    \"message\": \"Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\",\n    \"trace\": \"java.util.concurrent.TimeoutException: Did not observe any item or terminal signal within 1000ms in 'circuitBreaker' (and no fallback has been configured)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.handleTimeout(FluxTimeout.java:296)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.doTimeout(FluxTimeout.java:281)\\r\\n\\tat reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber.onNext(FluxTimeout.java:420)\\r\\n\\tat reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber.onNext(FluxOnErrorReturn.java:162)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.propagateDelay(MonoDelay.java:270)\\r\\n\\tat reactor.core.publisher.MonoDelay$MonoDelayRunnable.run(MonoDelay.java:285)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)\\r\\n\\tat reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)\\r\\n\\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)\\r\\n\\tat java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\\r\\n\\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\\r\\n\\tat java.base/java.lang.Thread.run(Thread.java:1583)\\r\\n\"\n}"
+								}
+							]
+						},
+						{
+							"name": "loans build version",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/build-version",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "response from the fallback method after retries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/build-version",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"build-version"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "5"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 12:47:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "1.1.0"
+								}
+							]
+						},
+						{
+							"name": "loans java configurations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/loans/api/java-config",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"loans",
+										"api",
+										"java-config"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:15:03 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "e598968e-7899-453b-952c-ced311310dbb"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"maven.home\": null,\n    \"java.version\": null,\n    \"java.home\": \"C:\\\\Program Files\\\\graalvm-jdk-21.0.6+8.1\"\n}"
+								},
+								{
+									"name": "rate limiter error response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:18:26 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "88e44f70-93cd-4e5b-8245-ff94bf4f7391"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"apiPath\": \"uri=/api/java-config\",\n    \"errorCode\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"RateLimiter 'getJavaConfig' does not permit further calls\",\n    \"errorTime\": \"2025-03-31T13:18:26.7068219\"\n}"
+								},
+								{
+									"name": "response with fallback method",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/loans/api/java-config",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"loans",
+												"api",
+												"java-config"
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "20"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 Mar 2025 11:23:54 GMT"
+										},
+										{
+											"key": "X-REQUEST-ID",
+											"value": "aa2fc7cc-88f9-4c98-bbca-fd33c0332caa"
+										}
+									],
+									"cookie": [],
+									"body": "Not Accepted Request"
+								}
+							]
+						},
+						{
+							"name": "cards support info",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-REQUEST-ID",
+										"value": "{{$guid}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/cards/api/support-info",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"cards",
+										"api",
+										"support-info"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 30 Mar 2025 10:50:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"This is the customer support info for Production environment\",\n    \"accountInfo\": {\n        \"name\": \"John Doe - Product Owner\",\n        \"email\": \"john.doe@example.com\"\n    },\n    \"contactList\": [\n        \"01234567890\",\n        \"01234567891\"\n    ]\n}"
+								},
+								{
+									"name": "response after timeout configurations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/cards/api/support-info",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"cards",
+												"api",
+												"support-info"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1096"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2025-03-30T11:04:02.962+00:00\",\n    \"path\": \"/cards/api/support-info\",\n    \"status\": 504,\n    \"error\": \"Gateway Timeout\",\n    \"requestId\": \"fcf96913-1\",\n    \"message\": \"Response took longer than timeout: PT3S\",\n    \"trace\": \"org.springframework.cloud.gateway.support.TimeoutException: Response took longer than timeout: PT3S\\r\\n\\tSuppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: \\nAssembly trace from producer [reactor.core.publisher.MonoError] :\\n\\treactor.core.publisher.Mono.error(Mono.java:299)\\n\\torg.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\nError has been observed at the following site(s):\\r\\n\\t*____Mono.error ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$6(NettyRoutingFilter.java:195)\\r\\n\\t*____Mono.defer ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:194)\\r\\n\\t*__Flux.timeout ⇢ at org.springframework.cloud.gateway.filter.NettyRoutingFilter.filter(NettyRoutingFilter.java:193)\\r\\nOriginal Stack Trace:\\r\\n\"\n}"
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "oauth2",
+						"oauth2": [
+							{
+								"key": "clientSecret",
+								"value": "{{ac-client-secret}}",
+								"type": "string"
+							},
+							{
+								"key": "clientId",
+								"value": "{{ac-client-id}}",
+								"type": "string"
+							},
+							{
+								"key": "state",
+								"value": "123fved4dfcerdfre15221re",
+								"type": "string"
+							},
+							{
+								"key": "grant_type",
+								"value": "authorization_code",
+								"type": "string"
+							},
+							{
+								"key": "authUrl",
+								"value": "http://localhost:8000/realms/master/protocol/openid-connect/auth",
+								"type": "string"
+							},
+							{
+								"key": "useBrowser",
+								"value": true,
+								"type": "boolean"
+							},
+							{
+								"key": "accessTokenUrl",
+								"value": "http://localhost:8000/realms/master/protocol/openid-connect/token",
+								"type": "string"
+							},
+							{
+								"key": "client_authentication",
+								"value": "header",
+								"type": "string"
+							},
+							{
+								"key": "scope",
+								"value": "openid profile email",
+								"type": "string"
+							},
+							{
+								"key": "tokenName",
+								"value": "NextGen-Bank Access-token",
+								"type": "string"
+							},
+							{
+								"key": "addTokenTo",
+								"value": "header",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
 					"name": "fetch gateway routes",
 					"request": {
 						"method": "GET",
@@ -5508,6 +7879,168 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Keycloak",
+			"item": [
+				{
+					"name": "client credentials - access token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var access_token = pm.response.json().access_token;\r",
+									"    pm.collectionVariables.set(\"access_token\", access_token);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "nextgen-customer-service",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "dF0nBS0oY8hAgCpctjw96Ptx8JHIuV7G",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid email profile",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{keycloak-url}}/realms/master/protocol/openid-connect/token",
+							"host": [
+								"{{keycloak-url}}"
+							],
+							"path": [
+								"realms",
+								"master",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "nextgen-customer-service",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "dF0nBS0oY8hAgCpctjw96Ptx8JHIuV7G",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "openid email profile",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{keycloak-url}}/realms/master/protocol/openid-connect/token",
+									"host": [
+										"{{keycloak-url}}"
+									],
+									"path": [
+										"realms",
+										"master",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "content-length",
+									"value": "2589"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGUkhSd05rakdmYVhkX2NDd0xCcFdGVHh4SmFKVWZXSVAyY3E4QjZ2TWw0In0.eyJleHAiOjE3NDM1ODM1MjEsImlhdCI6MTc0MzU4MzQ2MSwianRpIjoiNDc1OGIyNjItZTk0MS00ODMwLWE4YTgtYmQwZDExMmRiYmVhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiM2M5ZmFhMzMtYzRkNC00MzNmLTlmYWYtMmI0NThiMWI4MjMxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibmV4dGdlbi1jdXN0b21lci1zZXJ2aWNlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1tYXN0ZXIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSIsImNsaWVudEhvc3QiOiIxOTIuMTY4LjE0My4yIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtbmV4dGdlbi1jdXN0b21lci1zZXJ2aWNlIiwiY2xpZW50QWRkcmVzcyI6IjE5Mi4xNjguMTQzLjIiLCJjbGllbnRfaWQiOiJuZXh0Z2VuLWN1c3RvbWVyLXNlcnZpY2UifQ.X7rUh2gUB9Ux-UOeWNwabFEH40hD-AMthyxpqBOJkYzqIT7WXcpNedB7HJEWx5DIaDk9jazY7tdJ0JoaSdCWW3pMNcVjoECUyYmiyzAaNEVXRdGXWw9n1k30wo71conGTH-kOeuQyiJHtqMwnLjC5pgWT1L9MBxPfS_lwFIJ_qS8JMXBxIxrCMTmVWixUV-0VbwgXtNiG9S72Jufdezuvu5mdQ5qWbOpsMaAXTzqIU7BvZjVdR5I6YM2rPHcWYWbB44ii7UBChuLR_jMPPYa6YlUVgSJ3cLFx9QlZhqThWKCqaox2-WjEa8D3gN6fDJjeyZv17QCZrea5r3cH-Shtw\",\n    \"expires_in\": 60,\n    \"refresh_expires_in\": 0,\n    \"token_type\": \"Bearer\",\n    \"id_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGUkhSd05rakdmYVhkX2NDd0xCcFdGVHh4SmFKVWZXSVAyY3E4QjZ2TWw0In0.eyJleHAiOjE3NDM1ODM1MjEsImlhdCI6MTc0MzU4MzQ2MSwianRpIjoiMDcyZDNkMmMtYjFmNS00N2ZjLWJlY2EtZWIzZTM4Yjk0MGQxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJuZXh0Z2VuLWN1c3RvbWVyLXNlcnZpY2UiLCJzdWIiOiIzYzlmYWEzMy1jNGQ0LTQzM2YtOWZhZi0yYjQ1OGIxYjgyMzEiLCJ0eXAiOiJJRCIsImF6cCI6Im5leHRnZW4tY3VzdG9tZXItc2VydmljZSIsImF0X2hhc2giOiIwMW9DbC1xMGtQRDhrZVc2YzVCTGtnIiwiYWNyIjoiMSIsImNsaWVudEhvc3QiOiIxOTIuMTY4LjE0My4yIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtbmV4dGdlbi1jdXN0b21lci1zZXJ2aWNlIiwiY2xpZW50QWRkcmVzcyI6IjE5Mi4xNjguMTQzLjIiLCJjbGllbnRfaWQiOiJuZXh0Z2VuLWN1c3RvbWVyLXNlcnZpY2UifQ.bKHYMmb6JN18aH9yDGp9ydmFK02BMp0eMW2LTCEiBVmAqdeCkg2Ck3o4Wl6PTQm6Dac0W-wuEhG0id60Ve-2MgPnysneiGbkANZjsQu2GfBNzY_pAmPianuUXmhlhzb3yu9B8LhFKdBxy3FMEdr4cGJlq8hlDoD9roF7YzoZVR4dUfE6rEM1roxX_FiykdpU7Rg6WBPOqnOcS8WWFQX8nyf2rTOT6sYbmf2LLfujmV5hPMbjgugPkhN5bS_iK-Y9WGwnj0TpehEXE-qFN-RAaCh2j-xsEldHQ-sK-4XiU_IhLL5jFL1PRK0SxNBqZxqkV7drNF3cCILcS9vk9FMirQ\",\n    \"not-before-policy\": 0,\n    \"scope\": \"openid email profile\"\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -5562,6 +8095,15 @@
 			"key": "gateway-url",
 			"value": "http://localhost:8080",
 			"type": "default"
+		},
+		{
+			"key": "keycloak-url",
+			"value": "http://localhost:8000",
+			"type": "default"
+		},
+		{
+			"key": "access_token",
+			"value": ""
 		}
 	]
 }
