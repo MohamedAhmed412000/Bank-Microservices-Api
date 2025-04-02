@@ -60,8 +60,8 @@ services:
   accounts:
     image: "mohamedahmed412000/accounts:v7.0"
     container_name: accounts-ms
-    ports:
-      - "8091:8091"
+#    ports:
+#      - "8091:8091"
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8091/actuator/health/readiness" ]
       start_period: 10s
@@ -83,8 +83,8 @@ services:
   loans:
     image: "mohamedahmed412000/loans:v7.0"
     container_name: loans-ms
-    ports:
-      - "8092:8092"
+#    ports:
+#      - "8092:8092"
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8092/actuator/health/readiness" ]
       start_period: 10s
@@ -106,8 +106,8 @@ services:
   cards:
     image: "mohamedahmed412000/cards:v7.0"
     container_name: cards-ms
-    ports:
-      - "8093:8093"
+#    ports:
+#      - "8093:8093"
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8093/actuator/health/readiness" ]
       start_period: 10s
@@ -126,8 +126,21 @@ services:
       SPRING_APPLICATION_NAME: "cards"
       OTEL_SERVICE_NAME: "cards"
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    ports:
+      - "8000:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: "start-dev"
+    extends:
+      file: common-services.yml
+      service: network-deploy-service
+
   api-gateway:
-    image: "mohamedahmed412000/api-gateway:v3.0"
+    image: "mohamedahmed412000/api-gateway:v4.0"
     container_name: apigateway-ms
     ports:
       - "8080:8080"
@@ -150,6 +163,7 @@ services:
       SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2s
       SPRING_DATA_REDIS_TIMEOUT: 1s
       OTEL_SERVICE_NAME: "apigateway"
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: "http://keycloak:8080/realms/master/protocol/openid-connect/certs"
 
   # GRAFANA Services
   read:
