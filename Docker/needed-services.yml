@@ -11,20 +11,35 @@ services:
     networks:
       - nextgen-bank
 
-  rabbitmq:
-    image: "rabbitmq:4.0-management"
-    container_name: rabbitmq
-    hostname: rabbitmq
+#  rabbitmq:
+#    image: "rabbitmq:4.0-management"
+#    container_name: rabbitmq
+#    hostname: rabbitmq
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+#    healthcheck:
+#      test: [ "CMD", "rabbitmq-diagnostics", "check_port_connectivity" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 10
+#      start_period: 5s
+#    restart: unless-stopped
+#    networks:
+#      - nextgen-bank
+
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka
+    hostname: kafka
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "9092:9092"
     healthcheck:
-      test: [ "CMD", "rabbitmq-diagnostics", "check_port_connectivity" ]
+      test: [ "CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092 > /dev/null 2>&1 || exit 1" ]
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 5s
-    restart: unless-stopped
+      retries: 3
+      start_period: 40s
     networks:
       - nextgen-bank
 

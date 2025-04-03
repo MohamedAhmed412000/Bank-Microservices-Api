@@ -11,7 +11,8 @@ services:
         limits:
           memory: 700m
       environment:
-        SPRING_RABBITMQ_HOST: "rabbitmq"
+        SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: "kafka:9092"
+#        SPRING_RABBITMQ_HOST: "rabbitmq"
 
   configserver-deploy-base:
     extends:
