@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "827ee6e8-f1c5-45b1-8ec7-80237969375f",
+		"_postman_id": "ed58a190-f510-4be1-bcc9-7ab827f8bf98",
 		"name": "Bank-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32902590"
+		"_exporter_id": "31799000"
 	},
 	"item": [
 		{
@@ -1046,7 +1046,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -2368,7 +2368,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -2376,7 +2376,10 @@
 					"name": "actuator info",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": [
 						{
@@ -3349,7 +3352,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -5509,7 +5512,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						},
@@ -6416,6 +6419,11 @@
 						"type": "oauth2",
 						"oauth2": [
 							{
+								"key": "accessTokenUrl",
+								"value": "{{keycloak-url}}/realms/master/protocol/openid-connect/token",
+								"type": "string"
+							},
+							{
 								"key": "clientSecret",
 								"value": "{{cc-client-secret}}",
 								"type": "string"
@@ -6423,11 +6431,6 @@
 							{
 								"key": "clientId",
 								"value": "{{cc-client-id}}",
-								"type": "string"
-							},
-							{
-								"key": "accessTokenUrl",
-								"value": "http://localhost:8000/realms/master/protocol/openid-connect/token",
 								"type": "string"
 							},
 							{
@@ -6687,7 +6690,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						},
@@ -7594,6 +7597,21 @@
 						"type": "oauth2",
 						"oauth2": [
 							{
+								"key": "authUrl",
+								"value": "{{keycloak-url}}/realms/master/protocol/openid-connect/auth",
+								"type": "string"
+							},
+							{
+								"key": "accessTokenUrl",
+								"value": "{{keycloak-url}}/realms/master/protocol/openid-connect/token",
+								"type": "string"
+							},
+							{
+								"key": "state",
+								"value": "{{$guid}}",
+								"type": "string"
+							},
+							{
 								"key": "clientSecret",
 								"value": "{{ac-client-secret}}",
 								"type": "string"
@@ -7604,29 +7622,14 @@
 								"type": "string"
 							},
 							{
-								"key": "state",
-								"value": "123fved4dfcerdfre15221re",
-								"type": "string"
-							},
-							{
 								"key": "grant_type",
 								"value": "authorization_code",
-								"type": "string"
-							},
-							{
-								"key": "authUrl",
-								"value": "http://localhost:8000/realms/master/protocol/openid-connect/auth",
 								"type": "string"
 							},
 							{
 								"key": "useBrowser",
 								"value": true,
 								"type": "boolean"
-							},
-							{
-								"key": "accessTokenUrl",
-								"value": "http://localhost:8000/realms/master/protocol/openid-connect/token",
-								"type": "string"
 							},
 							{
 								"key": "client_authentication",
@@ -7915,12 +7918,12 @@
 								},
 								{
 									"key": "client_id",
-									"value": "nextgen-customer-service",
+									"value": "{{cc-client-id}}",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "dF0nBS0oY8hAgCpctjw96Ptx8JHIuV7G",
+									"value": "{{cc-client-secret}}",
 									"type": "text"
 								},
 								{
@@ -8066,41 +8069,6 @@
 		}
 	],
 	"variable": [
-		{
-			"key": "accounts-url",
-			"value": "http://localhost:8091",
-			"type": "string"
-		},
-		{
-			"key": "loans-url",
-			"value": "http://localhost:8092",
-			"type": "string"
-		},
-		{
-			"key": "cards-url",
-			"value": "http://localhost:8093",
-			"type": "string"
-		},
-		{
-			"key": "config-url",
-			"value": "http://localhost:8071",
-			"type": "default"
-		},
-		{
-			"key": "discovery-url",
-			"value": "http://localhost:8070",
-			"type": "default"
-		},
-		{
-			"key": "gateway-url",
-			"value": "http://localhost:8080",
-			"type": "default"
-		},
-		{
-			"key": "keycloak-url",
-			"value": "http://localhost:8000",
-			"type": "default"
-		},
 		{
 			"key": "access_token",
 			"value": ""
