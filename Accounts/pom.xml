@@ -115,6 +115,14 @@
 			<version>2.14.0</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+		</dependency>
 		<!--		<dependency>-->
 <!--			<groupId>org.springframework.cloud</groupId>-->
 <!--			<artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
@@ -153,7 +161,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>mohamedahmed412000/accounts:v7.0</image>
+						<image>mohamedahmed412000/accounts:v8.0</image>
 					</to>
 				</configuration>
 			</plugin>

@@ -27,5 +27,7 @@ public class Account extends BaseModel {
     @Size(max = 255)
     @Column(name = "BRANCH_ADDRESS")
     private String branchAddress;
+    @Column(name = "NOTIFICATION_SENT")
+    private Boolean notificationSent;
 
 }
