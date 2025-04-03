@@ -58,7 +58,7 @@ services:
       OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
-    image: "mohamedahmed412000/accounts:v7.0"
+    image: "mohamedahmed412000/accounts:v8.0"
     container_name: accounts-ms
     #    ports:
     #      - "8091:8091"
@@ -72,6 +72,8 @@ services:
       config-server:
         condition: service_healthy
       eureka-server:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     extends:
       file: common-services.yml
@@ -126,6 +128,19 @@ services:
       SPRING_APPLICATION_NAME: "cards"
       OTEL_SERVICE_NAME: "cards"
 
+  notifications:
+    image: "mohamedahmed412000/notifications:v1.0"
+    container_name: notifications-ms
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    extends:
+      file: common-services.yml
+      service: microservice-base
+    environment:
+      SPRING_APPLICATION_NAME: "notifications"
+      OTEL_SERVICE_NAME: "notifications"
+
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
@@ -165,24 +180,23 @@ services:
       OTEL_SERVICE_NAME: "apigateway"
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: "http://keycloak:8080/realms/master/protocol/openid-connect/certs"
 
-
-#  rabbitmq:
-#    image: "rabbitmq:4.0-management"
-#    container_name: rabbitmq
-#    hostname: rabbitmq
-#    ports:
-#      - "5672:5672"
-#      - "15672:15672"
-#    healthcheck:
-#      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
-#      interval: 10s
-#      timeout: 5s
-#      retries: 10
-#      start_period: 5s
-#    restart: unless-stopped
-#    extends:
-#      file: common-services.yml
-#      service: network-deploy-service
+  rabbitmq:
+    image: "rabbitmq:4.0-management"
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+    extends:
+      file: common-services.yml
+      service: network-deploy-service
 
 networks:
   nextgen-bank:

@@ -14,7 +14,7 @@ services:
       JAVA_TOOL_OPTIONS: "-javaagent:/app/libs/opentelemetry-javaagent-2.14.0.jar"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://tempo:4318"
       OTEL_METRICS_EXPORTER: none
-#      SPRING_RABBITMQ_HOST: "rabbitmq"
+      SPRING_RABBITMQ_HOST: "rabbitmq"
 
   configserver-deploy-base:
     extends:
