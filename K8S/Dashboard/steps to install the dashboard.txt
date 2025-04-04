@@ -1,0 +1,24 @@
+# Reference URL
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+first run the following commands to install the dashboard
+- helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+- helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+
+second to run this command to run the dashboard
+- kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+it will be accessible via this url: "https://localhost:8443"
+
+------------------------------------------------------------------------------------------------
+# Reference URL
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+third to generate token for authentication run the following commands
+- kubectl apply -f dashboard-adminuser.yaml
+- kubectl apply -f dashboard-rolebinding.yaml
+then to generate the token just run this command
+- kubectl -n kubernetes-dashboard create token admin-user
+
+and to create long-live token run the following commands
+- kubectl.exe apply -f long-live-secret.yaml
+- kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath="{.data.token}" | base64 -d
