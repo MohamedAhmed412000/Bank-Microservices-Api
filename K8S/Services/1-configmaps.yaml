@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nextgen-bank-configmap
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_CONFIG_IMPORT: "configserver:http://config-server:8071/"
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-server:8070/eureka/"
+  SPRING_DATA_REDIS_HOST: "redis"
+  CONFIGSERVER_APPLICATION_NAME: "config-server"
+  EUREKASERVER_APPLICATION_NAME: "eurekaserver"
+  ACCOUNTS_APPLICATION_NAME: "accounts"
+  CARDS_APPLICATION_NAME: "cards"
+  LOANS_APPLICATION_NAME: "loans"
+  GATEWAY_APPLICATION_NAME: "apigateway"
+  KEYCLOAK_ADMIN: "admin"
+  KEYCLOAK_ADMIN_PASSWORD: "admin"
+  SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: "http://keycloak:8000/realms/master/protocol/openid-connect/certs"
