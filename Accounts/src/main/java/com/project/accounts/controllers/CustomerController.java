@@ -2,8 +2,8 @@ package com.project.accounts.controllers;
 
 import com.project.accounts.constants.ApplicationConstants;
 import com.project.accounts.dto.CustomerDetailsDto;
-import com.project.accounts.dto.ErrorResponseDto;
 import com.project.accounts.services.ICustomerService;
+import com.project.common.dto.ErrorResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

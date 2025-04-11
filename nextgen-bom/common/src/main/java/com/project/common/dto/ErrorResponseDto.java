@@ -1,4 +1,4 @@
-package com.project.cards.dto;
+package com.project.common.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

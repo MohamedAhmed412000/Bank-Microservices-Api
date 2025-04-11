@@ -1,7 +1,7 @@
 package com.project.loans.controllers;
 
+import com.project.common.dto.ErrorResponseDto;
 import com.project.loans.constants.ApplicationConstants;
-import com.project.loans.dto.ErrorResponseDto;
 import com.project.loans.dto.LoanDto;
 import com.project.loans.dto.ResponseDto;
 import com.project.loans.enums.ResponsesEnum;

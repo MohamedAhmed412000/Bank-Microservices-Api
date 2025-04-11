@@ -2,10 +2,10 @@ package com.project.accounts.controllers;
 
 import com.project.accounts.constants.ApplicationConstants;
 import com.project.accounts.dto.CustomerDto;
-import com.project.accounts.dto.ErrorResponseDto;
 import com.project.accounts.dto.ResponseDto;
 import com.project.accounts.enums.ResponsesEnum;
 import com.project.accounts.services.IAccountService;
+import com.project.common.dto.ErrorResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

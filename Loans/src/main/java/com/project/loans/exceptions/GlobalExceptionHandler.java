@@ -1,6 +1,6 @@
 package com.project.loans.exceptions;
 
-import com.project.loans.dto.ErrorResponseDto;
+import com.project.common.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

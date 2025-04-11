@@ -17,8 +17,8 @@ public interface CardsFeignClient {
     @GetMapping(value = "/api/v1/cards/fetch-cards", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Object> fetchCardsDetails(
         @RequestHeader(ApplicationConstants.REQUEST_HEADER_NAME) String requestId,
-        @RequestParam String mobileNumber,
-        @RequestParam(required = false) String cardNumber
+        @RequestParam("mobileNumber") String mobileNumber,
+        @RequestParam(value = "cardNumber", required = false) String cardNumber
     );
 
 }
