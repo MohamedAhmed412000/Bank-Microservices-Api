@@ -1,0 +1,26 @@
+deploymentName: config-server-deployment
+appLabel: config-server
+appName: config-server
+serviceName: config-server
+
+replicaCount: 1
+
+image:
+  repository: mohamedahmed412000/config-server
+  tag: v5.0
+
+containerPort: 8071
+
+service:
+  type: ClusterIP
+  port: 8071
+  targetPort: 8071
+
+appNameEnabled: true
+profileEnabled: false
+configEnabled: false
+eurekaEnabled: false
+otelEnabled: false
+redisEnabled: false
+resourceServerEnabled: false
+kafkaEnabled: false

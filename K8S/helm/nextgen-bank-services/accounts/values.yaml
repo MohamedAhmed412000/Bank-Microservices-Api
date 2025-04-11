@@ -1,0 +1,26 @@
+deploymentName: accounts-deployment
+appLabel: accounts
+appName: accounts
+serviceName: accounts
+
+replicaCount: 1
+
+image:
+  repository: mohamedahmed412000/accounts
+  tag: v9.0
+
+containerPort: 8091
+
+service:
+  type: ClusterIP
+  port: 8091
+  targetPort: 8091
+
+appNameEnabled: true
+profileEnabled: true
+configEnabled: true
+eurekaEnabled: true
+otelEnabled: false
+redisEnabled: false
+resourceServerEnabled: false
+kafkaEnabled: true

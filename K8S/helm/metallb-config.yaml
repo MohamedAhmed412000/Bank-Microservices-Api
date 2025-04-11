@@ -1,0 +1,15 @@
+# metallb-config.yaml
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: rancher-desktop-pool
+  namespace: metallb-system
+spec:
+  addresses:
+    - 172.31.96.100-172.31.96.200  # Use IPs within your subnet
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: rancher-desktop-l2
+  namespace: metallb-system

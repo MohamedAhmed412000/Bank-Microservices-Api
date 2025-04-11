@@ -1,0 +1,10 @@
+1. Install helm chart
+- helm install <helm-name> <helm-path>
+
+2. View installed helm charts
+- helm uninstall <helm-name>
+
+3. Port forwarding for helm charts
+- kubectl port-forward svc/grafana 3030:3000
+- kubectl port-forward --namespace default svc/prometheus-kube-prometheus-prometheus 9090:9090
+- kubectl port-forward svc/kafka-controller-headless 9092:9092

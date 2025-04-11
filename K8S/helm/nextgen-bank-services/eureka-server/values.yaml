@@ -1,0 +1,26 @@
+deploymentName: eureka-server-deployment
+appLabel: eureka-server
+appName: eurekaserver
+serviceName: eureka-server
+
+replicaCount: 1
+
+image:
+  repository: mohamedahmed412000/eureka-server
+  tag: v2.0
+
+containerPort: 8070
+
+service:
+  type: LoadBalancer
+  port: 8070
+  targetPort: 8070
+
+appNameEnabled: true
+profileEnabled: false
+configEnabled: true
+eurekaEnabled: false
+otelEnabled: false
+redisEnabled: false
+resourceServerEnabled: false
+kafkaEnabled: false

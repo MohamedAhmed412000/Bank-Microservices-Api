@@ -1,0 +1,26 @@
+deploymentName: api-gateway-deployment
+appLabel: api-gateway
+appName: apigateway
+serviceName: api-gateway
+
+replicaCount: 1
+
+image:
+  repository: mohamedahmed412000/api-gateway
+  tag: v4.0
+
+containerPort: 8080
+
+service:
+  type: LoadBalancer
+  port: 8080
+  targetPort: 8080
+
+appNameEnabled: true
+profileEnabled: true
+configEnabled: true
+eurekaEnabled: true
+otelEnabled: false
+redisEnabled: true
+resourceServerEnabled: true
+kafkaEnabled: false

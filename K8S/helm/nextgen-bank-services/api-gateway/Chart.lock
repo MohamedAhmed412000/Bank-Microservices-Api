@@ -1,0 +1,6 @@
+dependencies:
+- name: nextgen-bank-common
+  repository: file://../../nextgen-bank-common
+  version: 0.1.0
+digest: sha256:a16469e1e6f21ebe3c68ccbd8c127557e1bc320802b61f29cbeaafb9c21039ea
+generated: "2025-04-05T14:26:05.2412097+02:00"

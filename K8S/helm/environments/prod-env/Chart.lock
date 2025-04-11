@@ -1,0 +1,27 @@
+dependencies:
+- name: nextgen-bank-common
+  repository: file://../../nextgen-bank-common
+  version: 0.1.0
+- name: config-server
+  repository: file://../../nextgen-bank-services/config-server
+  version: 0.1.0
+- name: eureka-server
+  repository: file://../../nextgen-bank-services/eureka-server
+  version: 0.1.0
+- name: accounts
+  repository: file://../../nextgen-bank-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../nextgen-bank-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../nextgen-bank-services/loans
+  version: 0.1.0
+- name: notifications
+  repository: file://../../nextgen-bank-services/notifications
+  version: 0.1.0
+- name: api-gateway
+  repository: file://../../nextgen-bank-services/api-gateway
+  version: 0.1.0
+digest: sha256:fd6df723ecfa99c1f09912485fb5bc3049b2bfb033c1d121dca899cae8651abb
+generated: "2025-04-05T15:49:42.1155136+02:00"

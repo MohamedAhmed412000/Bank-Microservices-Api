@@ -1,0 +1,26 @@
+deploymentName: notifications-deployment
+appLabel: notifications
+appName: notifications
+serviceName: notifications
+
+replicaCount: 1
+
+image:
+  repository: mohamedahmed412000/notifications
+  tag: v2.0
+
+containerPort: 9010
+
+service:
+  type: ClusterIP
+  port: 9010
+  targetPort: 9010
+
+appNameEnabled: true
+profileEnabled: false
+configEnabled: false
+eurekaEnabled: false
+otelEnabled: false
+redisEnabled: false
+resourceServerEnabled: false
+kafkaEnabled: true
